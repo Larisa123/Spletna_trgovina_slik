@@ -6,6 +6,7 @@ from bottle import *
 
 # Metode za prikazovanje ustreznih strani:
 
+
 @get('/')
 def prikaziMenuDomov():
     return template('domov2.html')
