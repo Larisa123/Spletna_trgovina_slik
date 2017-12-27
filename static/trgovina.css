@@ -1,0 +1,87 @@
+/*                TOP HEADING                */
+
+.topheading {
+    text-align: center;
+    font-size: 50px;
+    color: #999999;
+    font-style: italic;
+    margin: 50px;
+}
+
+/*                TOP NAVIGATION (MENU BAR)                   */
+
+.topnavigation {
+    overflow: hidden;
+    text-align: center;
+}
+
+/* Style the links inside the navigation bar */
+.topnavigation a {
+    float: center;
+    color: #999999;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 25px;
+}
+
+/* Change the color of links on hover */
+.topnavigation a:hover {
+    color: black;
+}
+
+/* Add a color to the active/current link */
+.topnavigation a.active {
+    font-weight: bold;
+}
+
+
+/*                LOGIN                   */
+
+form {
+    border: 3px solid #f1f1f1;
+}
+
+/* Full-width inputs */
+input[type=text], input[type=password] {
+    padding: 40px 5;
+    margin: 15px 10px;
+    border: 1px solid #ccc;
+}
+
+/* Set a style for all buttons */
+button {
+    color: white;
+    padding: 10px 20px;
+    margin: 5px 0;
+    border: none;
+    cursor: pointer;
+}
+
+/* Add a hover effect for buttons */
+button:hover {
+    opacity: 0.8;
+}
+
+/* Add padding to containers */
+.container {
+    padding: 16px;
+}
+
+
+
+/*                ABOUT ME                   */
+
+.about_me_image {
+    display: block;
+    margin: auto;
+    width: 8%;
+}
+
+.about_me_text {
+    text-align: center;
+}
+
+.about_me_title {
+    text-align: center;
+}
