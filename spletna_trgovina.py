@@ -30,6 +30,10 @@ def prikaziMenuTrgovina():
     #return template('store.html', email=mail, password=passw)
     return template('store.html')
 
+@get('/contact')
+def prikaziMenuKontakt():
+    return template('contact.html')
+
 
 def prikaziKosarico():
     """ Uporabnika napoti na novo stran, na kateri mu prikaže košarico v obliki seznama, tako da
