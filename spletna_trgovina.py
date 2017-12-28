@@ -15,12 +15,19 @@ def prikaziMenuDomov():
 def static(filename):
     return static_file(filename, root='static')
 
+@get('/static/images/<filename:path>')
+def static(filename):
+    return static_file(filename, root='static/images')
+
 @get('/aboutme')
 def prikaziMenuOpis():
     return template('aboutme.html')
 
 @get('/store')
 def prikaziMenuTrgovina():
+    #mail = None
+    #passw = None
+    #return template('store.html', email=mail, password=passw)
     return template('store.html')
 
 

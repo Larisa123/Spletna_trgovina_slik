@@ -18,21 +18,86 @@
         <a href="/contact">Contact</a>
     </div>
 
-    <h1> Store page </h1>
-    <h2> Login </h2>
+    <!-- Portfolio Gallery Grid -->
+    <div class="row">
+      <div class="column">
+        <div class="content">
+          <img src="static/images/krave_haloze.jpg" style="width:100%">
+          <h3>Cows pasturing</h3>
+          <p>Inspired by Haloze, Slovenia</p>
+        </div>
+      </div>
+      <div class="column">
+        <div class="content">
+          <img src="static/images/haloze_potka2.jpg" style="width:100%">
+          <h3>Inspired by Haloze, Slovenia</h3>
+          <p>Lorem ipsum..</p>
+        </div>
+      </div>
+      <div class="column">
+        <div class="content">
+          <img src="static/images/krava.jpg" style="width:100%">
+          <h3> Pasture </h3>
+          <p>Inspired by a cow pasturing in Slovene Alps</p>
+        </div>
+      </div>
+      <div class="column">
+        <div class="content">
+          <img src="static/images/haloze_potka1.jpg" style="width:100%">
+          <h3>Pathway in Haloze</h3>
+          <p>Lorem ipsum..</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="content">
+      <img src="bear.jpg" alt="Bear" style="width:100%">
+      <h3>Some Other Work</h3>
+      <p>Lorem ipsum..</p>
+    </div>
+
+
+    <!--- Register --->
+    <h2 class="my_label"> Register </h2>
+
+    <form action="/store">
+      <div class="container">
+        <label class="my_label"><b>Name</b></label>
+        <input type="text" placeholder="Enter your name" value="name" name="name" required>
+        <br/>
+
+        <label class="my_label"><b>Surname</b></label>
+        <input type="text" placeholder="Enter your surname" value="surname" name="surname" required>
+        <br/>
+
+        <label class="my_label"><b>Email</b></label>
+        <input type="text" placeholder="Enter your email" value="email" name="email" required>
+        <br/>
+
+        <label class="my_label"><b>Password</b></label>
+        <input type="password" placeholder="Enter your password" value="password" name="password" required>
+        <br/>
+
+        <button type="submit"> Register </button>
+      </div>
+    </form>
 
     <!--- Login --->
+    <h2 class="my_label"> Login </h2>
     <form action="/">
       <div class="container">
-        <label><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="username" required>
+        <label class="my_label"><b>Email</b></label>
+        <input type="text" placeholder="Enter email" value="email_login" name="email_login" required>
+        <br/>
 
-        <label><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="password" required>
+        <label class="my_label"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" value="password_login" name="password_login" required>
+        <br/>
 
         <button type="submit">Login</button>
       </div>
     </form>
+
 
 </body>
 
