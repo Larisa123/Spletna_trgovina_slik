@@ -20,44 +20,40 @@
 
     <!-- Portfolio Gallery Grid -->
 
+    <table class="shopping_basket_table">
+        <tr>
+            <th>
+                <form action="/store/basket">
+                    <input class="shopping_basket_upper" type="image" src="static/images/basket.png" />
+                </form>
+            </th>
+            <th class="store_image_subtitle"> {{cena_kosarice}} € </th>
+        </tr>
+    </table>
+
+
     <div class="row">
-        <% for i in range(number_of_images): %>
+        <% for (id, dosegljivost, naslov, pot, vrsta, cena) in slike: %>
           <div class="column">
             <div class="content">
-              <img src="static/images/{{image_name}}.jpg" style="width:100%">
-              <h3> {{image_title}} </h3>
+              <img src="static/images/{{pot}}.jpg" style="width:100%">
+              <h3> {{naslov}} </h3>
               <table style="width:100%">
                 <tr>
-                    <th class="store_image_subtitle"> Price: {{image_price}} € </th>
-                    <th> <input class="shopping_basket" type="image" src="static/images/basket.png" /> </th>
+                    <th class="store_image_subtitle"> Price: {{cena}} € </th>
+                    <th>
+                        <form method="post" action="/store/add_to_basket{{id}}">
+                            <input class="shopping_basket" type="image" src="static/images/basket.png" />
+                        </form>
+                    </th>
                  </tr>
               </table>
             </div>
           </div>
         <% end %>
-
-      <div class="column">
-        <div class="content">
-          <img src="static/images/haloze_potka2.jpg" style="width:100%">
-          <h3>Inspired by Haloze, Slovenia</h3>
-          <p>Lorem ipsum..</p>
-        </div>
-      </div>
-      <div class="column">
-        <div class="content">
-          <img src="static/images/krava.jpg" style="width:100%">
-          <h3> Pasture </h3>
-          <p>Inspired by a cow pasturing in Slovene Alps</p>
-        </div>
-      </div>
-      <div class="column">
-        <div class="content">
-          <img src="static/images/haloze_potka1.jpg" style="width:100%">
-          <h3>Pathway in Haloze</h3>
-          <p>Lorem ipsum..</p>
-        </div>
-      </div>
     </div>
+
+
 
     <!--- Register, login button --->
     <form action="/store/register" method="get">

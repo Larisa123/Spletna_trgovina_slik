@@ -3,9 +3,10 @@
 import modeli # delo z bazo
 from bottle import *
 
+prijavljen_uporabnik_id = None
+
 
 # Metode za prikazovanje ustreznih strani:
-
 
 @get('/')
 def prikaziMenuDomov():
@@ -23,21 +24,14 @@ def static(filename):
 def prikaziMenuOpis():
     return template('aboutme.html')
 
-@get('/store')
-def prikaziMenuTrgovina():
-    niz = 'store.html'
-    slike = modeli.slike()
-    niz += "number_of_images={}".format(len(slike))
-    #mail = None
-    #passw = None
-    #return template('store.html', email=mail, password=passw)
-
-
-    return template('store.html', number_of_images=3, image_name="krave_haloze", image_title="Haloze", image_price=30)
-
 @get('/contact')
 def prikaziMenuKontakt():
     return template('contact.html')
+
+@get('/store')
+def prikaziMenuTrgovina():
+    """ Prikaže slike z naslovi, cenami in košaricami. """
+    return template('store.html', cena_kosarice=modeli.Kosarica.Cena, slike=modeli.slike())
 
 @get('/store/register')
 def prikaziMenuRegister():
@@ -45,7 +39,7 @@ def prikaziMenuRegister():
 
 
 @post('/store/register_submit')
-def formhandler():
+def registracija():
     """ Vzame podatke vnešene v polja za registracijo in jih shrani v bazo. """
     name = request.forms.name
     surname = request.forms.surname
@@ -55,6 +49,12 @@ def formhandler():
     modeli.dodajUporabnika(name, surname, email, password)
     return template('login.html')
 
+@post('/store/add_to_basket<slika_id>')
+def registracija(slika_id):
+    """ Doda sliko v košarico prijavljenega uporabnika """
+    modeli.dodajSlikoVKosarico(prijavljen_uporabnik_id, slika_id)
+    redirect('/store')
+
 @get('/store/login')
 def prikaziMenuLogin():
     return template('login.html')
@@ -63,26 +63,10 @@ def prikaziMenuLogin():
 def prikaziMenuLogin():
     email = request.forms.email
     password = request.forms.password
-    modeli.prijavaUporabnika(email, password)
+    if modeli.prijavaUporabnika(email, password):
+        prijavljen_uporabnik_id = modeli.uporabnikovId(email)
     redirect('/store') # gremo nazaj na trgovino, da lahko kupujemo - sedaj lahko dodajamo v košarico
 
-
-def prikaziKosarico():
-    """ Uporabnika napoti na novo stran, na kateri mu prikaže košarico v obliki seznama, tako da
-     vidi, katere slike ima zaenkrat v njej, koliko posamezna slika stane in kakšna je vrednost
-     celotnega nakupa. V kolikor se odloči za nakup, ima tukaj možnost zaključiti nakup, sicer 
-     lahko nadaljuje z nakupom ali odstrani posamezne izdelke iz košarice. """
-    pass
-
-def prikaziRacun():
-    pass
-
-# Pomožne metode:
-
-def izpisiVsePodatkeTabele(tabela):
-    print()
-    for vrstica in tabela:
-        print(vrstica)
 
 
 run(host='localhost', port=8080, reloader=True)

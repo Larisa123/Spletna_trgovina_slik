@@ -1,4 +1,4 @@
-/*                TOP HEADING                */
+/*                                              TOP HEADING                */
 
 .topheading {
     font-family: SApple Chancery;
@@ -9,7 +9,7 @@
     margin: 50px;
 }
 
-/*                TOP NAVIGATION (MENU BAR)                   */
+/*                                      TOP NAVIGATION (MENU BAR)                   */
 
 .topnavigation {
     overflow: hidden;
@@ -37,7 +37,7 @@
 }
 
 
-/*                REGISTER, LOGIN                   */
+/*                                                   REGISTER, LOGIN                                    */
 
 form {
     border: 3px solid #f1f1f1;
@@ -84,7 +84,7 @@ button:hover {
 
 
 
-/*                ABOUT ME                   */
+/*                                       ABOUT ME                                     */
 
 .about_me_image {
     display: block;
@@ -108,7 +108,7 @@ button:hover {
     margin: auto;
 }
 
-/*                PORTFOLIO GALLERY - STORE                   */
+/*                                      PORTFOLIO GALLERY - STORE                   */
 
 * {
     box-sizing: border-box;
@@ -171,11 +171,23 @@ h1 {
     }
 }
 
-/*                Shopping basket button          */
+/*                                          Shopping basket button                                       */
 .shopping_basket {
-    display: block;
-    margin: auto;
+    margin-right: 0px;
+    margin-left: auto;
     width: 40%;
+}
+
+.shopping_basket_upper {
+    width: 50px;
+    margin-right: 0px;
+    margin-left: auto;
+}
+
+.shopping_basket_table {
+    width: 10%;
+    margin-right: 0px;
+    margin-left: auto;
 }
 
 .store_image_subtitle {

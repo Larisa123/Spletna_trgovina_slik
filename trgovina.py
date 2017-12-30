@@ -74,7 +74,7 @@ class Trgovina:
 trgovina = Trgovina()
 
 # Igranje z bazo:
-
+"""
 modeli.dodajUporabnika("Larisa", "Carli", "lara.carli@gmail.com", "1234")
 modeli.dodajUporabnika("Anja", "Trop", "anya.trop@gmail.com", "4321")
 print(modeli.uporabniki())
@@ -99,3 +99,4 @@ modeli.pretvoriKosaricoVNakup(1)
 #trgovina.izpisiVsePodatkeTabele()
 trgovina.izpisiVsePodatkeTabele(modeli.prikaziKosarico(uporabnik_id=1))
 
+"""
