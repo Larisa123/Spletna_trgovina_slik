@@ -32,6 +32,7 @@ def prijavaUporabnika(email, geslo):
                WHERE email = ?
                """, (email, ))
         pravoGeslo = cur.fetchone()
+        print(email)
         if pravoGeslo[0] == geslo:
             print("Prijava uporabnika z naslovom " + email + " uspešna.")
             return True

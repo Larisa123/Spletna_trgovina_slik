@@ -37,24 +37,26 @@
 }
 
 
-/*                LOGIN                   */
+/*                REGISTER, LOGIN                   */
 
 form {
     border: 3px solid #f1f1f1;
 }
 
 /* Full-width inputs */
-input[type=text], input[type=password] {
+/*
+input[type=text], input[type=password], input[type=email] {
     color: #999999;
     padding: 8px 4px;
     border: 1px solid #ccc;
 }
+*/
 
 /* Set a style for all buttons */
 button {
     color: white;
     padding: 10px 20px;
-    margin: 5px 0;
+    margin: 10px 0;
     border: none;
     cursor: pointer;
 }
@@ -66,12 +68,18 @@ button:hover {
 
 /* Add padding to containers */
 .container {
-    padding: 16px;
+    padding: 10px;
 }
 
 .my_label {
     color: #999999;
-    margin: 10px;
+    margin: 0px;
+}
+
+.submit_button {
+    display: block;
+    align: auto;
+    width: 100px;
 }
 
 
@@ -163,7 +171,23 @@ h1 {
     }
 }
 
-/*                CONTACT FORM                  */
+/*                Shopping basket button          */
+.shopping_basket {
+    display: block;
+    margin: auto;
+    width: 40%;
+}
+
+.store_image_subtitle {
+    width: 85%;
+    text-align: left;
+}
+
+.shopping_basket: hover {
+
+}
+
+/*                                                      CONTACT FORM                                                  */
 
 /* Style inputs with type="text", select elements and textareas */
 input[type=text], select, textarea {
@@ -175,6 +199,16 @@ input[type=text], select, textarea {
     margin-top: 6px; /* Add a top margin */
     margin-bottom: 16px; /* Bottom margin */
     resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+}
+
+input[type=password], input[type=email] {
+    width: 100%; /* Full width */
+    padding: 12px; /* Some padding */
+    border: 1px solid #ccc; /* Gray border */
+    border-radius: 4px; /* Rounded borders */
+    box-sizing: border-box; /* Make sure that padding and width stays in place */
+    margin-top: 6px; /* Add a top margin */
+    margin-bottom: 16px; /* Bottom margin */
 }
 
 /* Style the submit button with a specific background color etc */

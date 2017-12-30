@@ -25,14 +25,46 @@ def prikaziMenuOpis():
 
 @get('/store')
 def prikaziMenuTrgovina():
+    niz = 'store.html'
+    slike = modeli.slike()
+    niz += "number_of_images={}".format(len(slike))
     #mail = None
     #passw = None
     #return template('store.html', email=mail, password=passw)
-    return template('store.html')
+
+
+    return template('store.html', number_of_images=3, image_name="krave_haloze", image_title="Haloze", image_price=30)
 
 @get('/contact')
 def prikaziMenuKontakt():
     return template('contact.html')
+
+@get('/store/register')
+def prikaziMenuRegister():
+    return template('register.html')
+
+
+@post('/store/register_submit')
+def formhandler():
+    """ Vzame podatke vnešene v polja za registracijo in jih shrani v bazo. """
+    name = request.forms.name
+    surname = request.forms.surname
+    email = request.forms.email
+    password = request.forms.password
+
+    modeli.dodajUporabnika(name, surname, email, password)
+    return template('login.html')
+
+@get('/store/login')
+def prikaziMenuLogin():
+    return template('login.html')
+
+@post('/store/login_submit')
+def prikaziMenuLogin():
+    email = request.forms.email
+    password = request.forms.password
+    modeli.prijavaUporabnika(email, password)
+    redirect('/store') # gremo nazaj na trgovino, da lahko kupujemo - sedaj lahko dodajamo v košarico
 
 
 def prikaziKosarico():
