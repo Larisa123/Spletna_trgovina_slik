@@ -6,8 +6,8 @@ baza = "spletna_trgovina.db"
 conn = sqlite3.connect(baza)
 cur = conn.cursor()
 
-class Kosarica:
-    Cena = 0
+class Uporabnik:
+    id = None
 
 ##   UPORABNIKI:
 
@@ -35,7 +35,6 @@ def prijavaUporabnika(email, geslo):
                WHERE email = ?
                """, (email, ))
         pravoGeslo = cur.fetchone()
-        print(email)
         if pravoGeslo[0] == geslo:
             print("Prijava uporabnika z naslovom " + email + " uspešna.")
             return True
@@ -53,7 +52,7 @@ def uporabnikovId(email):
                    SELECT id FROM UPORABNIK
                    WHERE email = ?
                    """, (email,))
-    return cur.fetchone()
+    return cur.fetchone()[0]
 
 
 def uporabniki():
@@ -94,6 +93,22 @@ def vrednostSlike(slika_id):
                    """, (slika_id, ))
     return cur.fetchone()[0] # vrednost slike z id = slika_id
 
+def vrednostKosarice(uporabnik_id):
+    cur.execute("""
+            SELECT slika_id FROM KOSARICA
+            WHERE uporabnik_id = (?)
+            """, (uporabnik_id, ))
+    idji_slik = [tupl[0] for tupl in cur.fetchall()]
+
+    vrednost = 0
+    for slika_id in idji_slik:
+        cur.execute("""
+                SELECT cena FROM SLIKA
+                WHERE id = (?)
+                """, (slika_id,))
+        vrednost +=  cur.fetchone()[0]
+    return vrednost
+
 def slikaNaVoljo(slika_id):
     """ Vrne logično vrednost, ki nam pove, ali je slika z id = slika_id še na voljo. """
     cur.execute("""
@@ -120,11 +135,10 @@ def dodajSlikoVKosarico(uporabnik_id, slika_id):
                """, (uporabnik_id, slika_id, datum_vstavljanja))
         conn.commit()
 
-        Kosarica.Cena += vrednostSlike(slika_id)
         spremeniDosegljivostSlike(slika_id, False)
         print("Uspešno dodana slika " + str(slika_id) + " v košarico uporabnika " + str(uporabnik_id))
     except:
-        print("Vnos slike v košarico ni bil uspešen.")
+        print("Vnos slike " + str(slika_id) + " v košarico uporabnika " + str(uporabnik_id) + " ni bil uspešen.")
 
 def dodajSlikoNakupa(nakup_id, slika_id):
     cur.execute("""
@@ -175,7 +189,7 @@ def pretvoriKosaricoVNakup(uporabnik_id):
 
     except: print("Kosarica uporabnika " + str(uporabnik_id) + " je prazna." )
 
-def odstraniSlikoIzKosarice(uporabnik_id, slika_id, nakup):
+def odstraniSlikoIzKosarice(uporabnik_id, slika_id):
     try:
         cur.execute("""
                DELETE FROM KOSARICA 
@@ -184,7 +198,6 @@ def odstraniSlikoIzKosarice(uporabnik_id, slika_id, nakup):
         conn.commit()
         print("Uspešno odstranjena slika " + str(slika_id) + " iz košarice uporabnika " + str(uporabnik_id))
 
-        Kosarica.Cena -= vrednostSlike(slika_id)
         spremeniDosegljivostSlike(slika_id, True)
     except:
         print("Slike" + str(slika_id) + "sploh ni bilo v kosarici uporabnika " + str(uporabnik_id))
@@ -214,7 +227,7 @@ def relevantniPodatkiSlikKosarice(uporabnik_id):
                 SELECT naslov, ime_datoteke, cena FROM SLIKA
                 WHERE id = (?)
                 """, (slika_id,))
-        relevantni_podatki.append(cur.fetchall()[0])
+        relevantni_podatki.append((slika_id, ) + cur.fetchall()[0]) # tuple (id, naslov, pot, cena)
     return relevantni_podatki
 
 

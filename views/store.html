@@ -22,15 +22,30 @@
 
     <table class="shopping_basket_table">
         <tr>
-            <th>
-                <form method="get" action="/store/basket">
-                    <input class="shopping_basket_upper" type="image" src="static/images/basket.png" />
-                </form>
-            </th>
-            <th class="store_image_subtitle"> {{cena_kosarice}} € </th>
+            <% if uporabnik is not None: %>
+                <!--- Shopping basket --->
+                <th>
+                    <form method="get" action="/basket">
+                        <input class="shopping_basket_upper" type="image" src="static/images/basket.png" />
+                    </form>
+                </th>
+                <th class="store_image_subtitle"> {{cena_kosarice}} € </th>
+
+            <% end %>
+            <% if uporabnik is None: %>
+                    <!--- Register, login button --->
+                    <form action="/store/register" method="get">
+                      <button type="submit" class="store_button" value="Submit">Register</button>
+                    </form>
+                    <form action="/store/login" method="get">
+                      <button type="submit" class="store_button" value="Submit">Login</button>
+                    </form>
+            <% end %>
+
         </tr>
     </table>
 
+    <!--- Store products: ---->
 
     <div class="row">
         <% for (id, dosegljivost, naslov, pot, vrsta, cena) in slike: %>
@@ -41,27 +56,21 @@
               <table style="width:100%">
                 <tr>
                     <th class="store_image_subtitle"> Price: {{cena}} € </th>
-                    <th>
-                        <form method="post" action="/store/add_to_basket{{id}}">
-                            <input class="shopping_basket" type="image" src="static/images/basket.png" />
-                        </form>
-                    </th>
+                    <% if dosegljivost == 1: %>
+                        <th>
+                            <form method="post" action="/store/add_to_basket{{id}}">
+                                <input class="shopping_basket" type="image" src="static/images/basket.png" />
+                            </form>
+                        </th>
+                    <% elif dosegljivost == 0: %>
+                        <th class="store_image_subtitle" style="color: #d35541"> Sold </th>
+                    <% end %>
                  </tr>
               </table>
             </div>
           </div>
         <% end %>
     </div>
-
-
-
-    <!--- Register, login button --->
-    <form action="/store/register" method="get">
-      <button type="submit" value="Submit">Register</button>
-    </form>
-    <form action="/store/login" method="get">
-      <button type="submit" value="Submit">Login</button>
-    </form>
 
 
 

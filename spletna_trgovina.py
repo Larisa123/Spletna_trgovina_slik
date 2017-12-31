@@ -3,9 +3,6 @@
 import modeli # delo z bazo
 from bottle import *
 
-prijavljen_uporabnik_id = None
-
-
 # Metode za prikazovanje ustreznih strani:
 
 @get('/')
@@ -26,21 +23,31 @@ def prikaziMenuOpis():
 
 @get('/contact')
 def prikaziMenuKontakt():
-    podatki = modeli.relevantniPodatkiSlikKosarice(2)
-    return template('basket.html', relevantni_podatki_slik_kosarice=podatki, cena_kosarice=modeli.Kosarica.Cena)
+    return template('contact.html')
 
 @get('/store')
 def prikaziMenuTrgovina():
     """ Prikaže slike z naslovi, cenami in košaricami. """
-    return template('store.html', cena_kosarice=modeli.Kosarica.Cena, slike=modeli.slike())
+    uporabnik = modeli.Uporabnik.id
+    return template('store.html', uporabnik=uporabnik, cena_kosarice=modeli.vrednostKosarice(uporabnik), slike=modeli.slike())
 
 @get('/store/register')
 def prikaziMenuRegister():
     return template('register.html')
 
-@get('/store/basket')
-def prikaziKosarico():
-    return template('basket.html')
+
+@get('/basket')
+def prikaziKosaricoUporabnika():
+    uporabnik = modeli.Uporabnik.id
+    podatki = modeli.relevantniPodatkiSlikKosarice(uporabnik)
+    return template('basket.html', relevantni_podatki_slik_kosarice=podatki, cena_kosarice=modeli.vrednostKosarice(uporabnik))
+
+@get('/basket/invoice')
+def prikaziRacun():
+    """ Prikaze racun na podlagi košarice prijavljenega uporabnika. """
+    uporabnik = modeli.Uporabnik.id
+    podatki = modeli.relevantniPodatkiSlikKosarice(uporabnik)
+    return template('invoice.html', relevantni_podatki_slik_kosarice=podatki, cena_kosarice=modeli.vrednostKosarice(uporabnik))
 
 
 @post('/store/register_submit')
@@ -57,8 +64,14 @@ def registracija():
 @post('/store/add_to_basket<slika_id>')
 def dodajVKosarico(slika_id):
     """ Doda sliko v košarico prijavljenega uporabnika """
-    modeli.dodajSlikoVKosarico(prijavljen_uporabnik_id, slika_id)
+    modeli.dodajSlikoVKosarico(modeli.Uporabnik.id, slika_id)
     redirect('/store')
+
+@post('/basket/remove_painting<slika_id>')
+def odstraniIzKosarice(slika_id):
+    """ Doda sliko v košarico prijavljenega uporabnika """
+    modeli.odstraniSlikoIzKosarice(modeli.Uporabnik.id, slika_id)
+    redirect('/basket')
 
 @get('/store/login')
 def prikaziMenuLogin():
@@ -69,7 +82,7 @@ def prikaziMenuLogin():
     email = request.forms.email
     password = request.forms.password
     if modeli.prijavaUporabnika(email, password):
-        prijavljen_uporabnik_id = modeli.uporabnikovId(email)
+        modeli.Uporabnik.id = modeli.uporabnikovId(email)
     redirect('/store') # gremo nazaj na trgovino, da lahko kupujemo - sedaj lahko dodajamo v košarico
 
 

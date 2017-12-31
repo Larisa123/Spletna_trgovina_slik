@@ -6,27 +6,41 @@
     <link href="/static/trgovina.css" rel="stylesheet">
 </head>
 <body>
+
+    <h1 class="topheading">
+        Larisa Carli
+    </h1>
+
+    <div class="topnavigation" id="TopNavigation">
+      <a class="active" href="/">Home</a>
+        <a href="/store">Store</a>
+      <a href="/aboutme">About</a>
+        <a href="/contact">Contact</a>
+    </div>
+
     <!--- Register --->
-    <form method="post" action="/store/register_submit">
-      <div class="container">
-        <label class="my_label"><b>Name</b></label>
-        <input type="text" placeholder="Enter your name" name="name" required>
-        <br/>
+    <div class="shopping-cart">
+        <form method="post" action="/store/register_submit">
+          <div class="container">
+            <label class="my_label"><b>Name</b></label>
+            <input type="text" placeholder="Enter your name" name="name" required>
+            <br/>
 
-        <label class="my_label"><b>Surname</b></label>
-        <input type="text" placeholder="Enter your surname" name="surname" required>
-        <br/>
+            <label class="my_label"><b>Surname</b></label>
+            <input type="text" placeholder="Enter your surname" name="surname" required>
+            <br/>
 
-        <label class="my_label"><b>Email</b></label>
-        <input type="email" placeholder="Enter your email" name="email" required>
-        <br/>
+            <label class="my_label"><b>Email</b></label>
+            <input type="email" placeholder="Enter your email" name="email" required>
+            <br/>
 
-        <label class="my_label"><b>Password</b></label>
-        <input type="password" placeholder="Enter your password" name="password" required>
-        <br/>
+            <label class="my_label"><b>Password</b></label>
+            <input type="password" placeholder="Enter your password" name="password" required>
+            <br/>
 
-        <button class="submit_button" type="submit"> Register </button>
-      </div>
-    </form>
+            <button type="submit"> Register </button>
+          </div>
+        </form>
+    </div>
 </body>
 </html>
