@@ -76,26 +76,29 @@ button:hover {
 .about_me_image {
     display: block;
     margin: auto;
-    width: 8%;
+    width: 300px;
+    border-radius: 50%;
 }
 
 .about_me_text {
     text-align: center;
     font-size: 20px;
     font-weight: 100;
-    padding: 5px;
-
+    line-height: 28px;
 }
 
 .about_me_title {
-    text-align: center;
+    text-align: left;
     font-size: 30px;
+    font-weight: 100;
+
 }
 
 .about_me_image_pastels {
-    width: 80%;
+    width: 100%;
     display: block;
     margin: auto;
+    border-radius: 50%;
 }
 
 /*                                      PORTFOLIO GALLERY - STORE                   */
@@ -349,7 +352,7 @@ input[type=submit]:hover {
 .shopping-cart {
   width: 700px;
   height: auto;
-  margin: 80px auto;
+  margin: 50px auto;
   background: #FFFFFF;
   box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.10);
   border-radius: 6px;
