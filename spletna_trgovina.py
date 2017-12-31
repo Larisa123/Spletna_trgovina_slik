@@ -26,7 +26,7 @@ def prikaziMenuOpis():
 
 @get('/contact')
 def prikaziMenuKontakt():
-    return template('contact.html')
+    return template('basket.html')
 
 @get('/store')
 def prikaziMenuTrgovina():
@@ -36,6 +36,10 @@ def prikaziMenuTrgovina():
 @get('/store/register')
 def prikaziMenuRegister():
     return template('register.html')
+
+@get('/store/basket')
+def prikaziKosarico():
+    return template('basket.html')
 
 
 @post('/store/register_submit')
@@ -50,7 +54,7 @@ def registracija():
     return template('login.html')
 
 @post('/store/add_to_basket<slika_id>')
-def registracija(slika_id):
+def dodajVKosarico(slika_id):
     """ Doda sliko v košarico prijavljenega uporabnika """
     modeli.dodajSlikoVKosarico(prijavljen_uporabnik_id, slika_id)
     redirect('/store')

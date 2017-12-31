@@ -344,3 +344,118 @@ input[type=submit]:hover {
   from {opacity: .4}
   to {opacity: 1}
 }
+
+/*                                          Shopping basket                                     */
+
+/* code: https://designmodo.com/shopping-cart-ui/ */
+
+.shopping-cart {
+  width: 700px;
+  height: auto;
+  margin: 80px auto;
+  background: #FFFFFF;
+  box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.10);
+  border-radius: 6px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.basket_title {
+  height: 60px;
+  border-bottom: 1px solid #E1E8EE;
+  padding: 20px 30px;
+  color: #5E6977;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.basket_item {
+  padding: 20px 30px;
+  height: 120px;
+  display: flex;
+}
+
+.basket_item:nth-child(3) {
+  border-top:  1px solid #E1E8EE;
+  border-bottom:  1px solid #E1E8EE;
+}
+
+.basket_buttons {
+  position: relative;
+  padding-top: 30px;
+  margin-right: 60px;
+}
+
+.basket_delete-btn {
+  display: block;
+  margin: auto;
+  height: 30px;
+  width: 30px;
+  align: center;
+}
+
+.delete_btn_form {
+    background: white;
+    align: center;
+}
+
+.basket_image {
+  margin-left: 30px;
+  margin-right: 50px;
+  height: 80px;
+}
+
+.basket_description {
+  padding-top: 10px;
+  margin-right: 60px;
+  width: 115px;
+}
+
+.basket_description span {
+  display: block;
+  font-size: 14px;
+  color: #43484D;
+  font-weight: 400;
+}
+
+.basket_description span:first-child {
+  margin-bottom: 5px;
+}
+.basket_description span:last-child {
+  font-weight: 300;
+  margin-top: 8px;
+  color: #86939E;
+ }
+
+.basket_total-price {
+  width: 83px;
+  padding-top: 27px;
+  text-align: right;
+  font-size: 16px;
+  color: #43484D;
+  font-weight: 300;
+}
+
+@media (max-width: 800px) {
+  .shopping-cart {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+  }
+  .basket_item {
+    height: auto;
+    justify-content: center;
+  }
+  .basket_image img {
+    width: 50%;
+  }
+  .basket_image, .basket_description {
+    width: 100%;
+    text-align: center;
+    margin: 6px 0;
+  }
+  .basket_buttons {
+    margin-right: 20px;
+  }
+}

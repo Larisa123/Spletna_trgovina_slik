@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Larisa Carli | Fine Art</title>
+    <link href="/static/trgovina.css" rel="stylesheet">
+</head>
+
+<body>
+    <h1 class="topheading">
+        Larisa Carli
+    </h1>
+
+    <div class="topnavigation" id="TopNavigation">
+        <a class="active" href="/">Home</a>
+        <a href="/store">Store</a>
+        <a href="/aboutme">About</a>
+        <a href="/contact">Contact</a>
+    </div>
+
+    <!--- Shopping basket --->
+    <div class="shopping-cart">
+        <!-- Title -->
+        <div class="basket_title"> Shopping Basket </div>
+
+        <!-- Product #1 -->
+        <div class="basket_item" style="width:100%">
+            <form class="delete_btn_form" action="/store/basket/remove_painting" style="width:5%">
+                <input type="image" class="basket_delete-btn" src="static/images/delete.png" />
+            </form>
+
+            <img class="basket_image" src="static/images/haloze_potka2.JPG"  style="width:20%"/>
+            <p class="basket_description"  style="width:50%"> Haloze, Slovenia </p>
+            <div class="basket_total-price"  style="width:25%"> 135€ </div>
+        </div>
+
+        <!-- Total price -->
+        <div class="basket_item" style="width:100%; height: 60px">
+            <div class="basket_description_price"  style="width:100%; text-align:right"> Price total: </div>
+            <div class="basket_total-price_price"  style="width:100%; text-align:right"> 270€ </div>
+        </div>
+
+
+    </div>
+
+</body>
+
+</html>
