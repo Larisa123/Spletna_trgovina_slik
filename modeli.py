@@ -201,6 +201,23 @@ def prikaziKosarico(uporabnik_id=None):
             """)
     return cur.fetchall()
 
+def relevantniPodatkiSlikKosarice(uporabnik_id):
+    cur.execute("""
+            SELECT slika_id FROM KOSARICA
+            WHERE uporabnik_id = (?)
+            """, (uporabnik_id, ))
+    idji_slik = [tupl[0] for tupl in cur.fetchall()]
+
+    relevantni_podatki = []
+    for slika_id in idji_slik:
+        cur.execute("""
+                SELECT naslov, ime_datoteke, cena FROM SLIKA
+                WHERE id = (?)
+                """, (slika_id,))
+        relevantni_podatki.append(cur.fetchall()[0])
+    return relevantni_podatki
+
+
 def izpisiVsePodatkeTabele(tabela):
     print()
     for vrstica in tabela:

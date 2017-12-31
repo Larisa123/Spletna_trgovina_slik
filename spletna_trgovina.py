@@ -26,7 +26,8 @@ def prikaziMenuOpis():
 
 @get('/contact')
 def prikaziMenuKontakt():
-    return template('basket.html')
+    podatki = modeli.relevantniPodatkiSlikKosarice(2)
+    return template('basket.html', relevantni_podatki_slik_kosarice=podatki, cena_kosarice=modeli.Kosarica.Cena)
 
 @get('/store')
 def prikaziMenuTrgovina():

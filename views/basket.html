@@ -23,21 +23,23 @@
         <!-- Title -->
         <div class="basket_title"> Shopping Basket </div>
 
-        <!-- Product #1 -->
+        <!-- Products -->
+        <% for (naslov_slike, pot_slike, cena_slike) in relevantni_podatki_slik_kosarice: %>
         <div class="basket_item" style="width:100%">
             <form class="delete_btn_form" action="/store/basket/remove_painting" style="width:5%">
                 <input type="image" class="basket_delete-btn" src="static/images/delete.png" />
             </form>
 
-            <img class="basket_image" src="static/images/haloze_potka2.JPG"  style="width:20%"/>
-            <p class="basket_description"  style="width:50%"> Haloze, Slovenia </p>
-            <div class="basket_total-price"  style="width:25%"> 135€ </div>
+            <img class="basket_image" src="static/images/{{pot_slike}}.jpg"  style="width:20%"/>
+            <p class="basket_description"  style="width:50%"> {{naslov_slike}} </p>
+            <div class="basket_total-price"  style="width:25%"> {{cena_slike}}€ </div>
         </div>
+        <% end %>
 
         <!-- Total price -->
         <div class="basket_item" style="width:100%; height: 60px">
-            <div class="basket_description_price"  style="width:100%; text-align:right"> Price total: </div>
-            <div class="basket_total-price_price"  style="width:100%; text-align:right"> 270€ </div>
+            <div  style="width:100%; text-align:right"> Price total: </div>
+            <div style="width:100%; text-align:right"> {{cena_kosarice}}€ </div>
         </div>
 
 
