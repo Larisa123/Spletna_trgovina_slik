@@ -21,23 +21,23 @@
     <!--- Contact form --->
     <div class="shopping-cart">
         <div class="container">
-          <form action="/">
+          <form action="/store/contact_submit" method="post">
 
             <label for="fname">First Name</label>
-            <input type="text" id="fname" name="firstname" placeholder="Your name..">
+            <input type="text" id="fname" name="ime" placeholder="Your name..">
             <br/>
 
             <label for="lname">Last Name</label>
-            <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+            <input type="text" id="lname" name="priimek" placeholder="Your last name..">
             <br/>
 
             <label for="lname">Email</label>
-            <input type="text" id="email_form" name="email_form" placeholder="Your email..">
+            <input type="text" id="email_form" name="email" placeholder="Your email..">
             <br/>
 
             <label for="subject">What would you like to ask me?</label>
             <br/>
-            <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+            <textarea id="subject" name="sporocilo" placeholder="Write something.." style="height:200px"></textarea>
 
             <input type="submit" value="Submit">
 

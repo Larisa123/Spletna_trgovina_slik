@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Larisa Carli | Fine Art</title>
+    <link href="/static/trgovina.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="shopping-cart" style="width:1000px">
+        <!-- Title Messages -->
+        <div class="basket_title"> Messages </div>
+
+        <!-- Messages -->
+        <% for (id, ime, priimek, email, sporocilo) in sporocila: %>
+            <div class="basket_item" style="width:100%">
+                <form class="delete_btn_form" method="post" action="/basket/remove_message{{id}}" style="width:5%">
+                    <input type="image" class="basket_delete-btn" src="static/images/delete.png" />
+                </form>
+
+                <p class="basket_description"  style="width:15%, text-align:left; padding-left:20px; verical-align: center;"> {{"{} {}".format(ime, priimek)}} </p>
+                <p class="basket_description"  style="width:15%; text-align:left"> {{email}} </p>
+                <div class="basket_total-price"  style="width:65%; text-align:left"> {{sporocilo}} </div>
+            </div>
+        <% end %>
+
+
+
+    </div>
+
+</body>
+
+</html>

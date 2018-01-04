@@ -9,6 +9,10 @@ from bottle import *
 def prikaziMenuDomov():
     return template('domov2.html')
 
+@get('/admin')
+def prikaziPodatkeZaAdmina():
+    return template('admin.html', sporocila=modeli.pridobiSporocila())
+
 @get('/static/<filename:path>')
 def static(filename):
     return static_file(filename, root='static')
@@ -89,6 +93,21 @@ def prikaziMenuLogin():
         modeli.Uporabnik.id = modeli.uporabnikovId(email)
     redirect('/store') # gremo nazaj na trgovino, da lahko kupujemo - sedaj lahko dodajamo v košarico
 
+@post('/store/contact_submit')
+def dodajSporocilo():
+    ime = request.forms.ime
+    priimek = request.forms.priimek
+    email = request.forms.email
+    sporocilo = request.forms.sporocilo
+    modeli.dodajSporocilo(ime, priimek, email, sporocilo)
+    redirect('/contact') # TODO: dodaj sporocilo o uspesnosti
+
+
+@post('/basket/remove_message<sporocilo_id>')
+def odstraniSporocilo(sporocilo_id):
+    """ Doda sliko v košarico prijavljenega uporabnika """
+    modeli.odstraniSporocilo(sporocilo_id)
+    redirect('/admin')
 
 
 run(host='localhost', port=8080)

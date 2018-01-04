@@ -21,7 +21,7 @@
     font-size: 70px;
     color: #999999;
     font-style: italic;
-    margin: 10px;
+    margin: 30px;
 }
 
 /*                                      TOP NAVIGATION (MENU BAR)                   */
@@ -379,7 +379,7 @@ input[type=submit]:hover {
 .shopping-cart {
   width: 700px;
   height: auto;
-  margin: 50px auto;
+  margin: 40px auto;
   background: #FFFFFF;
   box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.10);
   border-radius: 6px;
@@ -398,7 +398,7 @@ input[type=submit]:hover {
 
 .basket_item {
   padding: 20px 30px;
-  height: 120px;
+  height: auto;
   display: flex;
 }
 

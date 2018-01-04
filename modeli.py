@@ -231,6 +231,26 @@ def relevantniPodatkiSlikKosarice(uporabnik_id):
     return relevantni_podatki
 
 
+##       Sporocila
+
+def dodajSporocilo(ime, priimek, email, sporocilo):
+    cur.execute("""
+                INSERT INTO SPOROCILO (ime, priimek, email, sporocilo)
+                VALUES (?, ?, ?, ?)
+                """, (ime, priimek, email, sporocilo))
+    conn.commit()
+
+def pridobiSporocila():
+    cur.execute("""SELECT * FROM SPOROCILO""")
+    return cur.fetchall()
+
+def odstraniSporocilo(sporocilo_id):
+    cur.execute("""
+                   DELETE FROM SPOROCILO 
+                   WHERE id = (?)
+                   """, (sporocilo_id,))
+    conn.commit()
+
 def izpisiVsePodatkeTabele(tabela):
     print()
     for vrstica in tabela:
