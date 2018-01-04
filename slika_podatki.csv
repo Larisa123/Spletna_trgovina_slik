@@ -1,5 +1,15 @@
 id,dosegljivost,naslov,ime_datoteke,vrsta,cena
 2,0,Haloze,haloze_potka2,pastel painting,135.0
-3,1,Pasture,krave_haloze,pastel painting,135.0
-4,1,Slovenian Alps,krava,pastel painting,115.0
-5,0,A pathway in Haloze,haloze_potka1,pastel painting,72.0
+3,0,Pasture,krave_haloze,pastel painting,135.0
+4,0,Slovenian Alps,krava,pastel painting,115.0
+5,1,A pathway in Haloze,haloze_potka1,pastel painting,72.0
+6,1,"Lake Garda, Italy",garda_drevo,pastel painting,72.0
+7,1,Flowers,rozice,pastel painting,72.0
+8,1,Sunset in Slovene Alps,"sunset_zima
+",,135.0
+9,1,"Park Sturmovci, Slovenia",sturmovci,,135.0
+10,1,Pasture,pasture01,,135.0
+11,1,Podlehnik,podlehnik,,135.0
+12,1,Winter,zima,,135.0
+13,1,"Sunset in Areh, Slovenia",soncni_zahod_areh,,135.0
+14,1,"Cows, Haloze",krave3,,72.0

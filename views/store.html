@@ -30,7 +30,6 @@
                     </form>
                 </th>
                 <th class="store_image_subtitle"> {{cena_kosarice}} € </th>
-
             <% end %>
             <% if uporabnik is None: %>
                     <!--- Register, login button --->
@@ -44,7 +43,6 @@
                         <button type="submit" class="store_button" value="Submit">Login</button>
                     </form>
                 </th>
-
             <% end %>
 
         </tr>
@@ -58,7 +56,7 @@
             <div class="content">
               <img src="static/images/{{pot}}.jpg" style="width:100%">
               <h3> {{naslov}} </h3>
-              <table style="width:100%">
+              <table style="width:100%; height:50px;">
                 <tr>
                     <th class="store_image_subtitle"> Price: {{cena}} € </th>
                     <% if dosegljivost == 1: %>
