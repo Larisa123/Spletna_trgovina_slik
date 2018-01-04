@@ -1,3 +1,4 @@
+/*
 var slideIndex = 1;
 
 showSlides(slideIndex);
@@ -27,17 +28,14 @@ function showSlides(n) {
   slides[slideIndex-1].style.display = "block";
   dots[slideIndex-1].className += "active";
 }
+*/
 
-var slideIndex = 0;
-showSlides();
-
-// prva slika:
-var slides = document.getElementsByClassName("mySlides");
-slides[1].style.display = "block";
+var slideIndex = 1;
+showSlides2();
 
 
 
-function showSlides() {
+function showSlides2() {
     var i;
     var slides = document.getElementsByClassName("mySlides");
     for (i = 0; i < slides.length; i++) {
@@ -46,5 +44,5 @@ function showSlides() {
     slideIndex++;
     if (slideIndex > slides.length) {slideIndex = 1}
     slides[slideIndex-1].style.display = "block";
-    setTimeout(showSlides, 6000); // Change image every 6 seconds
+    setTimeout(showSlides2, 6000); // Change image every 6 seconds
 }

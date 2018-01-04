@@ -1,28 +1,44 @@
 /*                                              TOP HEADING                */
 
+@font-face {
+    font-family: mainTitle;
+    src: url(fonts/Simply_Glamorous.ttf);
+}
+
+@font-face {
+    font-family: menu;
+    src: url(fonts/TheSkinny.otf);
+}
+
+@font-face {
+    font-family: thin_font;
+    src: url(fonts/Lato-Thin.ttf);
+}
+
 .topheading {
-    font-family: SApple Chancery;
+    font-family: mainTitle;
     text-align: center;
-    font-size: 50px;
+    font-size: 70px;
     color: #999999;
     font-style: italic;
-    margin: 40px;
+    margin: 10px;
 }
 
 /*                                      TOP NAVIGATION (MENU BAR)                   */
 
 .topnavigation {
+    font-family: menu;
     overflow: hidden;
     text-align: center;
-    border-top:  2px solid #f1f1f1;
+    border-top:  2px solid #e6e6e6;
     padding: 10px;
-    border-bottom:  2px solid #f1f1f1;
+    border-bottom:  2px solid #e6e6e6;
 }
 
 /* Style the links inside the navigation bar */
 .topnavigation a {
     float: center;
-    color: #999999;
+    color:  #999999;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -49,6 +65,7 @@ form {
 
 /* Set a style for all buttons */
 button {
+    background-color:  #b3b3b3;
     color: white;
     padding: 10px 20px;
     margin: 10px 0;
@@ -84,6 +101,8 @@ button:hover {
 }
 
 .about_me_text {
+    font-family: thin_font;
+    color: #999999;
     text-align: center;
     font-size: 20px;
     font-weight: 100;
@@ -91,6 +110,8 @@ button:hover {
 }
 
 .about_me_title {
+    color: #999999;
+    font-family: thin_font;
     text-align: left;
     font-size: 30px;
     font-weight: 100;
@@ -115,7 +136,7 @@ body {
     color: #999999;
     background-color: #f5f5f5;
     padding: 20px;
-    font-family: Arial;
+    font-family: thin_font;
     font-weight: 200;
 }
 
@@ -195,6 +216,7 @@ h1 {
 }
 
 .store_button {
+    background-color:  #b3b3b3;
     width: 90px;
     align: right;
     border-radius: 4px;
@@ -300,7 +322,6 @@ input[type=submit]:hover {
 
 /* Caption text */
 .text {
-  color: #f2f2f2;
   font-size: 15px;
   padding: 8px 12px;
   position: absolute;
@@ -371,7 +392,6 @@ input[type=submit]:hover {
   height: 60px;
   border-bottom: 1px solid #E1E8EE;
   padding: 20px 30px;
-  color: #5E6977;
   font-size: 18px;
   font-weight: 400;
 }
@@ -421,7 +441,6 @@ input[type=submit]:hover {
 .basket_description span {
   display: block;
   font-size: 14px;
-  color: #43484D;
   font-weight: 400;
 }
 
