@@ -17,6 +17,10 @@ def static(filename):
 def static(filename):
     return static_file(filename, root='static/images')
 
+@get('/static/fonts/<filename:path>')
+def static(filename):
+    return static_file(filename, root='static/fonts')
+
 @get('/aboutme')
 def prikaziMenuOpis():
     return template('aboutme.html')
@@ -87,5 +91,5 @@ def prikaziMenuLogin():
 
 
 
-run(host='localhost', port=8080, reloader=True)
+run(host='localhost', port=8080)
 
