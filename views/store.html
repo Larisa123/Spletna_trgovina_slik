@@ -34,12 +34,17 @@
             <% end %>
             <% if uporabnik is None: %>
                     <!--- Register, login button --->
+                <th>
                     <form action="/store/register" method="get">
-                      <button type="submit" class="store_button" value="Submit">Register</button>
+                        <button type="submit" class="store_button" value="Submit">Register</button>
                     </form>
+                </th>
+                <th>
                     <form action="/store/login" method="get">
-                      <button type="submit" class="store_button" value="Submit">Login</button>
+                        <button type="submit" class="store_button" value="Submit">Login</button>
                     </form>
+                </th>
+
             <% end %>
 
         </tr>
