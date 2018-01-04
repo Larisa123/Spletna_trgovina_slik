@@ -24,10 +24,44 @@
                 <div class="basket_total-price"  style="width:65%; text-align:left"> {{sporocilo}} </div>
             </div>
         <% end %>
-
-
-
+        </div>
     </div>
+
+        <!--- Invoices ---->
+
+        <div class="shopping-cart" style="width:1000px">
+            <div class="basket_title"> Invoices (static for now) </div>
+
+            <div class="container" style="background-color:white">
+                <div style="overflow-x:auto;">
+                  <table class="invoice_table">
+                    <tr class="invoice_row">
+                      <th class="invoice_column"> Purchase Date </th>
+                      <th class="invoice_column"> User </th>
+                      <th class="invoice_column"> Purchase items </th>
+                      <th class="invoice_column"> Total price </th>
+                    </tr>
+                    <tr class="invoice_row">
+                      <td class="invoice_column">27-01-2017</td>
+                      <td class="invoice_column">Larisa Carli</td>
+                      <td>
+                          <a href="paintings_from_invoice_id" class="invoice_column"> Paintings </a>
+                      </td>
+                      <td class="invoice_column"> 565 € </td>
+                    </tr>
+
+                      <tr class="invoice_row">
+                      <td class="invoice_column">27-01-2017</td>
+                      <td class="invoice_column"> France Prešeren </td>
+                      <td>
+                          <a href="paintings_from_invoice_id" class="invoice_column"> Paintings </a>
+                      </td>
+                      <td class="invoice_column"> 405 € </td>
+                    </tr>
+
+                  </table>
+                </div>
+            </div>
 
 </body>
 
