@@ -498,3 +498,39 @@ input[type=submit]:hover {
 }
 
 .invoice_row:nth-child(1){background-color: #f2f2f2}
+
+/*                                          Alert box                                     */
+
+
+/* The alert message box */
+.alert {
+    padding: 20px;
+    background-color: #FF4500; /* Orange Red */
+    color: white;
+    margin-bottom: 15px;
+}
+
+/* The success message box */
+.success {
+    padding: 20px;
+    background-color: #9ACD32; /* Lime Green */
+    color: white;
+    margin-bottom: 15px;
+}
+
+/* The close button */
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+    color: black;
+}

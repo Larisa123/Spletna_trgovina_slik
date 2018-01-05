@@ -8,6 +8,8 @@ cur = conn.cursor()
 
 class Uporabnik:
     id = None
+    hotel_dodati_v_kosarico = False
+    prijava_neuspesna = False
 
 ##   UPORABNIKI:
 

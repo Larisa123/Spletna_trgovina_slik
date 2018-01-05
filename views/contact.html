@@ -21,6 +21,20 @@
     <!--- Contact form --->
     <div class="shopping-cart">
         <div class="container">
+
+            <% if message_sent: %>
+                <div class="success">
+                  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                  Your message has been sent!
+                </div>
+            <% end %>
+            <% if message_sent is False: %>
+                <div class="alert">
+                  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                  Something went wrong. Please try again or refresh your browser.
+                </div>
+            <% end %>
+
           <form action="/store/contact_submit" method="post">
 
             <label for="fname">First Name</label>
