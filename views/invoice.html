@@ -8,27 +8,37 @@
 
 <body>
     <div class="shopping-cart" style="width:800px">
-        <div class="basket_title"> Your purchase: (Static for now) </div>
+        <div class="basket_title"> Your purchase: </div>
 
-        <div class="container" style="background-color:white">
+        <div class="container" style="background-color:white; padding-left:30px; padding-right:30px; padding-bottom:20px; padding-top:5px;">
+            <p> Date: {{date}} </p>
             <div style="overflow-x:auto;">
               <table class="invoice_table">
+                  <!--- Main row --->
                 <tr class="invoice_row">
-                  <th class="invoice_column"> Painting type </th>
-                  <th class="invoice_column"> Painting title </th>
-                  <th class="invoice_column"> Price </th>
+                    <th class="invoice_column" style="width:10%; border-radius:0px;"> Painting </th>
+                    <th class="invoice_column" style="border-radius:0px;"> Painting type </th>
+                    <th class="invoice_column" style="border-radius:0px;"> Painting title </th>
+                    <th class="invoice_column" style="width:15%; border-radius:0px;"> Price </th>
                 </tr>
-                <tr class="invoice_row">
-                  <td class="invoice_column"> Pastel painting </td>
-                  <td class="invoice_column"> Haloze </td>
-                  <td class="invoice_column"> 135 € </td>
-                </tr>
+
+                  <!--- Products row ---->
+                  <% for (naslov_slike, pot_slike, vrsta_slike, cena_slike) in relevantni_podatki_slik_nakupa: %>
+                    <tr class="invoice_row">
+                        <td class="invoice_column" style="width:10%">
+                            <img src="static/images/{{pot_slike}}.jpg" style="height:40px">
+                        </td>
+                        <td class="invoice_column"> {{vrsta_slike}} </td>
+                        <td class="invoice_column"> {{naslov_slike}} </td>
+                        <td class="invoice_column" style="width:15%"> {{cena_slike}} € </td>
+                    </tr>
+                  <% end %>
               </table>
             </div>
         </div>
 
         <div class="basket_item" style="width:100%; height: 60px; border-top:1px solid #E1E8EE;">
-            <div  style="width:100%; text-align:right"> Price total: 135 € </div>
+            <div  style="width:100%; text-align:right"> Price total: {{vrednost_nakupa}} € </div>
         </div>
     </div>
 </body>

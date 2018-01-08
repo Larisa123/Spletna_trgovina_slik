@@ -21,7 +21,7 @@
     font-size: 70px;
     color: #999999;
     font-style: italic;
-    margin: 30px;
+    margin: 40px;
 }
 
 /*                                      TOP NAVIGATION (MENU BAR)                   */
@@ -43,7 +43,7 @@
     padding: 14px 16px;
     text-decoration: none;
     font-weight: 50;
-    font-size: 25px;
+    font-size: 30px;
 }
 
 /* Change the color of links on hover */
@@ -67,7 +67,9 @@ form {
 button {
     background-color:  #b3b3b3;
     color: white;
-    padding: 10px 20px;
+    font-size: 13px;
+    font-family: thin_font;
+    padding: 10px 10px;
     margin: 10px 0;
     border: none;
     cursor: pointer;
@@ -193,15 +195,25 @@ h1 {
 
 /*                                          Shopping basket button                                       */
 .shopping_basket {
+    opacity: 0.3;
     margin-right: 0px;
     margin-left: auto;
     width: 40%;
 }
 
+.shopping_basket:hover {
+    opacity: 1;
+}
+
 .shopping_basket_upper {
     width: 50px;
+    opacity: 0.7;
     margin-right: 0px;
     margin-left: auto;
+}
+
+.shopping_basket_upper:hover {
+    opacity: 1;
 }
 
 .shopping_basket_table {
@@ -216,7 +228,6 @@ h1 {
 }
 
 .store_button {
-    background-color:  #b3b3b3;
     width: 90px;
     align: right;
     border-radius: 4px;
@@ -416,9 +427,15 @@ input[type=submit]:hover {
 .basket_delete-btn {
   display: block;
   margin: auto;
+  float: center;
+  opacity: 0.3;
   height: 30px;
   width: 30px;
   align: center;
+}
+
+.basket_delete-btn:hover {
+    opacity: 1.0;
 }
 
 .delete_btn_form {

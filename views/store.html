@@ -27,12 +27,12 @@
         </div>
     <% end %>
 
-    <table class="shopping_basket_table">
+    <table class="shopping_basket_table" style="margin-right: 30px">
         <tr>
             <% if uporabnik is not None: %>
                 <!--- Shopping basket --->
                 <th>
-                    <form method="get" action="/basket">
+                    <form method="get" action="/basket" style="border:none">
                         <input class="shopping_basket_upper" type="image" src="static/images/basket.png" />
                     </form>
                 </th>
@@ -41,12 +41,12 @@
             <% if uporabnik is None: %>
                     <!--- Register, login button --->
                 <th>
-                    <form action="/store/register" method="get">
+                    <form action="/store/register" method="get" style="border:none">
                         <button type="submit" class="store_button" value="Submit">Register</button>
                     </form>
                 </th>
                 <th>
-                    <form action="/store/login" method="get">
+                    <form action="/store/login" method="get" style="border:none">
                         <button type="submit" class="store_button" value="Submit">Login</button>
                     </form>
                 </th>
@@ -68,7 +68,7 @@
                     <th class="store_image_subtitle"> Price: {{cena}} € </th>
                     <% if dosegljivost == 1: %>
                         <th>
-                            <form method="post" action="/store/add_to_basket{{id}}">
+                            <form method="post" action="/store/add_to_basket{{id}}" style="color: white; border:none">
                                 <input class="shopping_basket" type="image" src="static/images/basket.png" />
                             </form>
                         </th>

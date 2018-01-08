@@ -26,8 +26,8 @@
         <!-- Products -->
         <% for (id, naslov_slike, pot_slike, cena_slike) in relevantni_podatki_slik_kosarice: %>
             <div class="basket_item" style="width:100%">
-                <form class="delete_btn_form" method="post" action="/basket/remove_painting{{id}}" style="width:5%">
-                    <input type="image" class="basket_delete-btn" src="static/images/delete.png" />
+                <form class="delete_btn_form" method="post" action="/basket/remove_painting{{id}}" style="width:5%; border:none; align: center">
+                    <input type="image" class="basket_delete-btn" src="static/images/delete.png" style="margin: auto"/>
                 </form>
 
                 <img class="basket_image" src="static/images/{{pot_slike}}.jpg"  style="width:20%"/>
@@ -44,8 +44,8 @@
 
         <!--- Buy button --->
 
-        <form style="width:100%" action="/basket/invoice" method="get">
-            <button onclick="/basket/invoice" type="submit" class="store_button" style="width:200px ;align:right; margin-left: 30px;" value="Submit">
+        <form style="width:100%" action="/invoice" method="get">
+            <button onclick="/invoice" type="submit" class="store_button" style="width:200px ;align:right; margin-left: 30px;" value="Submit">
                 Complete purchase
             </button>
         </form>

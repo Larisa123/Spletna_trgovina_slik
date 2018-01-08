@@ -15,7 +15,7 @@
         <!-- Messages -->
         <% for (id, ime, priimek, email, sporocilo) in sporocila: %>
             <div class="basket_item" style="width:100%">
-                <form class="delete_btn_form" method="post" action="/basket/remove_message{{id}}" style="width:5%">
+                <form class="delete_btn_form" method="post" action="/basket/remove_message{{id}}" style="width:5%; border:none; margin: auto;">
                     <input type="image" class="basket_delete-btn" src="static/images/delete.png" />
                 </form>
 
@@ -32,14 +32,14 @@
         <div class="shopping-cart" style="width:1000px">
             <div class="basket_title"> Invoices (static for now) </div>
 
-            <div class="container" style="background-color:white">
+            <div class="container" style="background-color:white; padding-left:30px; padding-right:30px; padding-bottom:20px; padding-top:5px;">
                 <div style="overflow-x:auto;">
                   <table class="invoice_table">
                     <tr class="invoice_row">
-                      <th class="invoice_column"> Purchase Date </th>
-                      <th class="invoice_column"> User </th>
-                      <th class="invoice_column"> Purchase items </th>
-                      <th class="invoice_column"> Total price </th>
+                      <th class="invoice_column" style="border-radius:0px;"> Purchase Date </th>
+                      <th class="invoice_column" style="border-radius:0px;"> User </th>
+                      <th class="invoice_column" style="border-radius:0px;"> Purchase items </th>
+                      <th class="invoice_column" style="border-radius:0px;"> Total price </th>
                     </tr>
                     <tr class="invoice_row">
                       <td class="invoice_column">27-01-2017</td>

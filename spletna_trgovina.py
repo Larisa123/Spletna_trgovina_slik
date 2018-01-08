@@ -58,12 +58,15 @@ def prikaziKosaricoUporabnika():
     podatki = modeli.relevantniPodatkiSlikKosarice(uporabnik)
     return template('basket.html', relevantni_podatki_slik_kosarice=podatki, cena_kosarice=modeli.vrednostKosarice(uporabnik))
 
-@get('/basket/invoice')
+@get('/invoice')
 def prikaziRacun():
     """ Prikaze racun na podlagi košarice prijavljenega uporabnika. """
     uporabnik = modeli.Uporabnik.id
-    podatki = modeli.relevantniPodatkiSlikKosarice(uporabnik)
-    return template('invoice.html', relevantni_podatki_slik_kosarice=podatki, cena_kosarice=modeli.vrednostKosarice(uporabnik))
+    uporabnik = 1 # TODO: odstrani!
+    id_nakupa = modeli.pretvoriKosaricoVNakup(uporabnik)
+    print(id_nakupa)
+    datum, vrednost_nakupa, podatki_o_slikah = modeli.relevantniPodatkiSlikNakupa(id_nakupa)
+    return template('invoice.html', relevantni_podatki_slik_nakupa=podatki_o_slikah, vrednost_nakupa=vrednost_nakupa, date=datum)
 
 
 @post('/store/register_submit')
@@ -129,6 +132,4 @@ def odstraniSporocilo(sporocilo_id):
     modeli.odstraniSporocilo(sporocilo_id)
     redirect('/admin')
 
-
 run(host='localhost', port=8080)
-

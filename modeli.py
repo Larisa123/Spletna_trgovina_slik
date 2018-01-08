@@ -161,37 +161,37 @@ def novRacun(vrednost):
                 SELECT id FROM RACUN 
                 """)
     racun = cur.fetchall()
-    return racun[len(racun)-1][0] # id racuna
+    return racun[len(racun)-1][0] # zadnji id racuna - to je id tega racuna
 
 def pretvoriKosaricoVNakup(uporabnik_id):
-    try:
-        # POVEZAVA JE TAKA: nakup -> (racun, slike_nakupa -> slike)
-        # zato moramo najprej narediti racun, nakup, potem pa slike nakupa, ker ta rabi id od nakupa,
-        #
-        # najprej poglej katere slike so v kosarici tega uporabnika:
-        cur.execute("""
-                    SELECT slika_id FROM KOSARICA
-                    WHERE uporabnik_id = (?)
-                    """, (uporabnik_id,))
+    if uporabnik_id is None:
+        return
+    # POVEZAVA JE TAKA: nakup -> (racun, slike_nakupa -> slike)
+    # zato moramo najprej narediti racun, nakup, potem pa slike nakupa, ker ta rabi id od nakupa,
+    #
+    # najprej poglej katere slike so v kosarici tega uporabnika:
+    cur.execute("""
+                        SELECT slika_id FROM KOSARICA
+                        WHERE uporabnik_id = (?)
+                        """, (uporabnik_id,))
 
-        slike_kosarice = cur.fetchall()  # slike imamo
-        vrednosti = [vrednostSlike(slika[0]) for slika in slike_kosarice]
+    slike_kosarice = cur.fetchall()  # slike imamo
+    vrednosti = [vrednostSlike(slika[0]) for slika in slike_kosarice]
 
-        # ustvarimo nov racun in nakup (racun prej, ker rabi nakup tudi id od racuna):
-        nov_racun_id = novRacun(vrednost=sum(vrednosti))
-        cur.execute("""
-                    INSERT INTO NAKUP (racun_id)
-                    VALUES (?)
-                    """, (nov_racun_id,))
+    # ustvarimo nov racun in nakup (racun prej, ker rabi nakup tudi id od racuna):
+    nov_racun_id = novRacun(vrednost=sum(vrednosti))
+    cur.execute("""
+                        INSERT INTO NAKUP (racun_id)
+                        VALUES (?)
+                        """, (nov_racun_id,))
+    # dodajmo posamezno sliko v tabelo slike_nakupa in jih odstranimo iz kosarice:
+    for slika in slike_kosarice:
+        dodajSlikoNakupa(nakup_id=nov_racun_id, slika_id=slika[0])
+        odstraniSlikoIzKosarice(uporabnik_id, slika[0], nakup=True)
 
-        # dodajmo posamezno sliko v tabelo slike_nakupa in jih odstranimo iz kosarice:
-        for slika in slike_kosarice:
-            dodajSlikoNakupa(nakup_id=nov_racun_id, slika_id=slika[0])
-            odstraniSlikoIzKosarice(uporabnik_id, slika[0], nakup=True)
+    return nov_racun_id  # isti kot nakup_id
 
-    except: print("Kosarica uporabnika " + str(uporabnik_id) + " je prazna." )
-
-def odstraniSlikoIzKosarice(uporabnik_id, slika_id):
+def odstraniSlikoIzKosarice(uporabnik_id, slika_id, nakup):
     try:
         cur.execute("""
                DELETE FROM KOSARICA 
@@ -232,6 +232,33 @@ def relevantniPodatkiSlikKosarice(uporabnik_id):
         relevantni_podatki.append((slika_id, ) + cur.fetchall()[0]) # tuple (id, naslov, pot, cena)
     return relevantni_podatki
 
+def relevantniPodatkiSlikNakupa(id_nakupa):
+    cur.execute("""
+                SELECT slika_id FROM SLIKE_NAKUPA
+                WHERE nakup_id = (?)
+                """, (id_nakupa,))
+    idji_slik = [tupl[0] for tupl in cur.fetchall()]
+
+    cur.execute("""
+                SELECT datum, vrednost FROM RACUN
+                WHERE id = (?)
+                """, (id_nakupa, )) # id_nakupa je isti kot id_racuna
+    vlovljeno = cur.fetchall()
+    #datum, vrednost_nakupa = vlovljeno
+    datum, vrednost_nakupa = "datum", 123
+
+    podatki_o_slikah = []
+    for slika_id in idji_slik:
+        cur.execute("""
+                SELECT naslov, ime_datoteke, vrsta, cena FROM SLIKA
+                WHERE id = (?)
+                """, (slika_id,))
+        podatki_o_slikah.append(cur.fetchall()[0]) # tuple (naslov, pot, vrsta, cena)
+    print(podatki_o_slikah)
+
+    return datum, vrednost_nakupa, podatki_o_slikah
+
+
 
 ##       Sporocila
 
@@ -257,6 +284,12 @@ def izpisiVsePodatkeTabele(tabela):
     print()
     for vrstica in tabela:
         print(vrstica)
+
+def izbrisiVsePodatke(imeTabele):
+    cur.execute("""
+                DELETE * FROM (?)
+                """, (imeTabele,))
+    conn.commit()
 
 # VPRASANJA: Pri kosarici imamo zdaj vsak izdelek ostevilcen z ID kosarice:
 # id, uporabnik_id, slika_id, datum_vstavljanja, datum_odstranitve,
