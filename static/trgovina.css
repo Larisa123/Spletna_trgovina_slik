@@ -571,3 +571,21 @@ input[type=submit]:hover {
 .closebtn:hover {
     color: black;
 }
+
+/*                                         SLIDESHOW                                             */
+/* Koda iz https://css-tricks.com/snippets/jquery/simple-auto-playing-slideshow/ */
+
+#slideshow {
+    margin: auto;
+    position: relative;
+    width: 100%;
+    padding: 10px;
+}
+
+#slideshow > div {
+    position: absolute;
+    top: 10px;
+    left: 400px;
+    right: 400px;
+    bottom: 10px;
+}
