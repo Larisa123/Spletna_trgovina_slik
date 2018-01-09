@@ -7,11 +7,66 @@
 </head>
 
 <body>
-    <div class="shopping-cart" style="width:800px">
-        <div class="basket_title"> Your purchase: </div>
+    <div class="shopping-cart" style="width:1000px">
+        <div class="basket_title" style="font-weight:bold"> INVOICE </div>
+
+        <!--- Podatki o pošiljatelju (meni) --->
+        <table style="padding:30px; width:40%; margin-left:60%">
+            <tr>
+                <th class="invoice_desc_column_0"> From </th>
+                <th class="invoice_desc_column_1"> Larisa Carli </th>
+            </tr>
+            <tr>
+                <th class="invoice_desc_column_0">  </th>
+                <th class="invoice_desc_column_1"> Oražnova ulica 6 </th>
+            </tr>
+            <tr>
+                <th class="invoice_desc_column_0">  </th>
+                <th class="invoice_desc_column_1"> 1000 Ljubljana </th>
+            </tr>
+            <tr>
+                <th class="invoice_desc_column_0">  </th>
+                <th class="invoice_desc_column_1"> Slovenia </th>
+            </tr>
+        </table>
+
+        <!--- Podatki o naslovniku --->
+        <table style="padding:30px; width:40%; margin-left:60%;">
+            <tr>
+                <th class="invoice_desc_column_0"> To </th>
+                <th class="invoice_desc_column_1"> Ime Priimek </th>
+            </tr>
+            <tr>
+                <th class="invoice_desc_column_0">  </th>
+                <th class="invoice_desc_column_1"> Naslov </th>
+            </tr>
+            <tr>
+                <th class="invoice_desc_column_0">  </th>
+                <th class="invoice_desc_column_1"> Mesto </th>
+            </tr>
+            <tr>
+                <th class="invoice_desc_column_0">  </th>
+                <th class="invoice_desc_column_1"> Drzava </th>
+            </tr>
+        </table>
+
+
+        <!--- Podatki o računu --->
+        <table style="padding-bottom:30px">
+            <tr>
+                <th class="invoice_desc_column_0" style="padding: 0px 30px;"> Invoice ID </th>
+                <th class="invoice_desc_column_1"> 002 </th>
+            </tr>
+            <tr>
+                <th class="invoice_desc_column_0" style="padding: 0px 30px;"> Issue Date </th>
+                <th class="invoice_desc_column_1"> 27-06-2016 </th> </tr>
+            <tr>
+                <th class="invoice_desc_column_0" style="padding: 0px 30px;"> Subject </th>
+                <th class="invoice_desc_column_1"> Original Art Purchase </th> </tr>
+        </table>
+
 
         <div class="container" style="background-color:white; padding-left:30px; padding-right:30px; padding-bottom:20px; padding-top:5px;">
-            <p> Date: {{date}} </p>
             <div style="overflow-x:auto;">
               <table class="invoice_table">
                   <!--- Main row --->
@@ -33,12 +88,15 @@
                         <td class="invoice_column" style="width:15%"> {{cena_slike}} € </td>
                     </tr>
                   <% end %>
+
+                  <tr class="invoice_row">
+                        <td class="invoice_column" style="width:10%"> </td>
+                        <td class="invoice_column">  </td>
+                        <td class="invoice_column" style="font-weight:bold"> Price total: </td>
+                        <td class="invoice_column" style="width:15%; font-weight:bold"> {{vrednost_nakupa}} € </td>
+                    </tr>
               </table>
             </div>
-        </div>
-
-        <div class="basket_item" style="width:100%; height: 60px; border-top:1px solid #E1E8EE;">
-            <div  style="width:100%; text-align:right"> Price total: {{vrednost_nakupa}} € </div>
         </div>
     </div>
 </body>

@@ -94,7 +94,7 @@ def dodajVKosarico(slika_id):
 @post('/basket/remove_painting<slika_id>')
 def odstraniIzKosarice(slika_id):
     """ Doda sliko v košarico prijavljenega uporabnika """
-    modeli.odstraniSlikoIzKosarice(modeli.Uporabnik.id, slika_id)
+    modeli.odstraniSlikoIzKosarice(modeli.Uporabnik.id, slika_id, nakup=False)
     redirect('/basket')
 
 @get('/store/login')
