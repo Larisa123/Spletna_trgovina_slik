@@ -7,17 +7,6 @@
 </head>
 <body>
 
-    <h1 class="topheading">
-        Larisa Carli
-    </h1>
-
-    <div class="topnavigation" id="TopNavigation">
-      <a class="active" href="/">Home</a>
-        <a href="/store">Store</a>
-      <a href="/aboutme">About</a>
-        <a href="/contact">Contact</a>
-    </div>
-
     <!--- Register --->
     <div class="shopping-cart">
         <form method="post" action="/store/register_submit">
@@ -38,9 +27,22 @@
             <input type="password" placeholder="Enter your password" name="password" required>
             <br/>
 
+              <label class="my_label"><b>Address (Please enter your shipping address)</b></label>
+            <input type="text" placeholder="Enter your address" name="address" required>
+            <br/>
+
+              <label class="my_label"><b>City</b></label>
+            <input type="text" placeholder="Enter your city" name="city" required>
+            <br/>
+
+              <label class="my_label"><b>Country</b></label>
+            <input type="text" placeholder="Enter your country" name="country" required>
+            <br/>
+
             <button type="submit"> Register </button>
           </div>
         </form>
     </div>
+
 </body>
 </html>

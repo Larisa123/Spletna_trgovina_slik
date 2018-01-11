@@ -31,42 +31,45 @@
         </table>
 
         <!--- Podatki o naslovniku --->
-        <table style="padding:30px; width:40%; margin-left:60%;">
-            <tr>
+        <!--- (ime, priimek, naslov, mesto, drzava) = uporabnik --->
+        <% if uporabnik is not None: %>
+            <table style="padding:30px; width:40%; margin-left:60%;">
+                <tr>
                 <th class="invoice_desc_column_0"> To </th>
-                <th class="invoice_desc_column_1"> Ime Priimek </th>
-            </tr>
-            <tr>
-                <th class="invoice_desc_column_0">  </th>
-                <th class="invoice_desc_column_1"> Naslov </th>
-            </tr>
-            <tr>
-                <th class="invoice_desc_column_0">  </th>
-                <th class="invoice_desc_column_1"> Mesto </th>
-            </tr>
-            <tr>
-                <th class="invoice_desc_column_0">  </th>
-                <th class="invoice_desc_column_1"> Drzava </th>
-            </tr>
-        </table>
+                    <th class="invoice_desc_column_1"> {{uporabnik[0] + " " + uporabnik[1]}} </th>
+                </tr>
+                <tr>
+                    <th class="invoice_desc_column_0">  </th>
+                    <th class="invoice_desc_column_1"> {{uporabnik[2]}} </th>
+                </tr>
+                <tr>
+                    <th class="invoice_desc_column_0">  </th>
+                    <th class="invoice_desc_column_1"> {{uporabnik[3]}} </th>
+                </tr>
+                <tr>
+                    <th class="invoice_desc_column_0">  </th>
+                    <th class="invoice_desc_column_1"> {{uporabnik[4]}} </th>
+                </tr>
+            </table>
+        <% end %>
 
 
         <!--- Podatki o računu --->
         <table style="padding-bottom:30px">
             <tr>
                 <th class="invoice_desc_column_0" style="padding: 0px 30px;"> Invoice ID </th>
-                <th class="invoice_desc_column_1"> 002 </th>
+                <th class="invoice_desc_column_1"> {{nakup_id}} </th>
             </tr>
             <tr>
                 <th class="invoice_desc_column_0" style="padding: 0px 30px;"> Issue Date </th>
-                <th class="invoice_desc_column_1"> 27-06-2016 </th> </tr>
+                <th class="invoice_desc_column_1"> {{date}} </th> </tr>
             <tr>
                 <th class="invoice_desc_column_0" style="padding: 0px 30px;"> Subject </th>
                 <th class="invoice_desc_column_1"> Original Art Purchase </th> </tr>
         </table>
 
 
-        <div class="container" style="background-color:white; padding-left:30px; padding-right:30px; padding-bottom:20px; padding-top:5px;">
+        <div class="container" style="background-color:white; padding-left:30px; padding-right:30px; padding-bottom:300px; padding-top:5px;">
             <div style="overflow-x:auto;">
               <table class="invoice_table">
                   <!--- Main row --->
@@ -89,14 +92,24 @@
                     </tr>
                   <% end %>
 
-                  <tr class="invoice_row">
+                  <tr class="invoice_row" style="border-top: 1px solid #666666; border-bottom: 1px solid #666666;">
                         <td class="invoice_column" style="width:10%"> </td>
                         <td class="invoice_column">  </td>
                         <td class="invoice_column" style="font-weight:bold"> Price total: </td>
-                        <td class="invoice_column" style="width:15%; font-weight:bold"> {{vrednost_nakupa}} € </td>
-                    </tr>
+                        <td class="invoice_column" style="width:15%; font-weight:bold;">
+                            {{vrednost_nakupa}} €
+                        </td>
+                  </tr>
               </table>
             </div>
+
+            <!-- Web2PDF Converter Button BEGIN -->
+            <script type="text/javascript">
+            var
+            pdfbuttonlabel="Save as PDF"
+            </script>
+            <script src="http://www.web2pdfconvert.com/pdfbutton2.js" id="Web2PDF" type="text/javascript"></script>
+            <!-- Web2PDF Converter Button END -->
         </div>
     </div>
 </body>

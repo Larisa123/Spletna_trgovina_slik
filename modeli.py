@@ -13,14 +13,14 @@ class Uporabnik:
 
 ##   UPORABNIKI:
 
-def dodajUporabnika(ime, priimek, email, geslo):
+def dodajUporabnika(ime, priimek, email, geslo, naslov, mesto, drzava):
     """ Doda uporabnika v bazo uporabnikov, v bistvo je to registracija, tako, da se
      uporabnik lahko z temi podatki potem prijavi. """
     try:
         cur.execute("""
-               INSERT INTO UPORABNIK (ime, priimek, email, geslo)
-               VALUES (?,?,?,?)
-               """, (ime, priimek, email, geslo))
+               INSERT INTO UPORABNIK (ime, priimek, email, geslo, naslov, mesto, drzava)
+               VALUES (?,?,?,?,?,?,?)
+               """, (ime, priimek, email, geslo, naslov, mesto, drzava))
         print("Uspešno dodan uporabnik: " + ime + " " + priimek)
 
         conn.commit()
@@ -64,15 +64,24 @@ def uporabniki():
         """)
     return cur.fetchall()
 
+def podatkiUporabnika(uporabnik_id):
+    if uporabnik_id is None: return
+
+    cur.execute("""
+                   SELECT ime, priimek, naslov, mesto, drzava FROM UPORABNIK
+                   WHERE id = (?)
+                   """, (uporabnik_id, ))
+    return cur.fetchone()
+
+
+##   SLIKE, KOSARICA, NAKUP:
+
 def slike():
     """ Vrne tabelo vseh slik. """
     cur.execute("""
         SELECT * FROM SLIKA
         """)
     return cur.fetchall()
-
-
-##   SLIKE, KOSARICA, NAKUP:
 
 def dodajSliko(naslov, vrsta, cena):
     """ Doda sliko v tabelo slik. """
@@ -243,9 +252,7 @@ def relevantniPodatkiSlikNakupa(id_nakupa):
                 SELECT datum, vrednost FROM RACUN
                 WHERE id = (?)
                 """, (id_nakupa, )) # id_nakupa je isti kot id_racuna
-    vlovljeno = cur.fetchall()
-    #datum, vrednost_nakupa = vlovljeno
-    datum, vrednost_nakupa = "datum", 123
+    datum, vrednost_nakupa = cur.fetchall()[0]
 
     podatki_o_slikah = []
     for slika_id in idji_slik:
@@ -254,7 +261,6 @@ def relevantniPodatkiSlikNakupa(id_nakupa):
                 WHERE id = (?)
                 """, (slika_id,))
         podatki_o_slikah.append(cur.fetchall()[0]) # tuple (naslov, pot, vrsta, cena)
-    print(podatki_o_slikah)
 
     return datum, vrednost_nakupa, podatki_o_slikah
 

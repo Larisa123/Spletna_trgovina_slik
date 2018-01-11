@@ -61,12 +61,17 @@ def prikaziKosaricoUporabnika():
 @get('/invoice')
 def prikaziRacun():
     """ Prikaze racun na podlagi košarice prijavljenega uporabnika. """
-    uporabnik = modeli.Uporabnik.id
-    uporabnik = 1 # TODO: odstrani!
-    id_nakupa = modeli.pretvoriKosaricoVNakup(uporabnik)
-    print(id_nakupa)
+    uporabnik_id = modeli.Uporabnik.id
+    id_nakupa = modeli.pretvoriKosaricoVNakup(uporabnik_id)
     datum, vrednost_nakupa, podatki_o_slikah = modeli.relevantniPodatkiSlikNakupa(id_nakupa)
-    return template('invoice.html', relevantni_podatki_slik_nakupa=podatki_o_slikah, vrednost_nakupa=vrednost_nakupa, date=datum)
+    podatki_uporabnika = modeli.podatkiUporabnika(uporabnik_id)
+
+    return template('invoice.html',
+                    relevantni_podatki_slik_nakupa=podatki_o_slikah,
+                    vrednost_nakupa=vrednost_nakupa,
+                    date=datum,
+                    nakup_id=id_nakupa,
+                    uporabnik=podatki_uporabnika)
 
 
 @post('/store/register_submit')
@@ -76,9 +81,12 @@ def registracija():
     surname = request.forms.surname
     email = request.forms.email
     password = request.forms.password
+    address = request.forms.address
+    city = request.forms.city
+    country = request.forms.country
 
-    modeli.dodajUporabnika(name, surname, email, password)
-    return template('login.html')
+    modeli.dodajUporabnika(name, surname, email, password, address, city, country)
+    redirect('/store/login')
 
 @post('/store/add_to_basket<slika_id>')
 def dodajVKosarico(slika_id):
