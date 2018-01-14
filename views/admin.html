@@ -27,41 +27,73 @@
         </div>
     </div>
 
-        <!--- Invoices ---->
+    <!--- Invoices ---->
 
         <div class="shopping-cart" style="width:1000px">
-            <div class="basket_title"> Invoices (static for now) </div>
+            <div class="basket_title"> Invoices </div>
 
             <div class="container" style="background-color:white; padding-left:30px; padding-right:30px; padding-bottom:20px; padding-top:5px;">
                 <div style="overflow-x:auto;">
+
                   <table class="invoice_table">
                     <tr class="invoice_row">
-                      <th class="invoice_column" style="border-radius:0px;"> Purchase Date </th>
+                      <th class="invoice_column" style="border-radius:0px;"> Purchase ID </th>
+                      <th class="invoice_column" style="border-radius:0px;"> Date </th>
                       <th class="invoice_column" style="border-radius:0px;"> User </th>
                       <th class="invoice_column" style="border-radius:0px;"> Purchase items </th>
                       <th class="invoice_column" style="border-radius:0px;"> Total price </th>
                     </tr>
-                    <tr class="invoice_row">
-                      <td class="invoice_column">27-01-2017</td>
-                      <td class="invoice_column">Larisa Carli</td>
-                      <td>
-                          <a href="paintings_from_invoice_id" class="invoice_column"> Paintings </a>
-                      </td>
-                      <td class="invoice_column"> 565 € </td>
-                    </tr>
 
-                      <tr class="invoice_row">
-                      <td class="invoice_column">27-01-2017</td>
-                      <td class="invoice_column"> France Prešeren </td>
-                      <td>
-                          <a href="paintings_from_invoice_id" class="invoice_column"> Paintings </a>
-                      </td>
-                      <td class="invoice_column"> 405 € </td>
-                    </tr>
-
+                      <% for (id, datum, ime, priimek, vrednost) in nakupi: %>
+                        <tr class="invoice_row">
+                          <td class="invoice_column"> {{id}} </td>
+                          <td class="invoice_column"> {{datum}} </td>
+                          <td class="invoice_column"> {{ime + " " + priimek}} </td>
+                          <td>
+                              <a href="paintings_from_invoice_id{{nakup_id}}" method="post" class="invoice_column"> Paintings </a>
+                          </td>
+                          <td class="invoice_column"> {{vrednost}} € </td>
+                        </tr>
+                      <% end %>
                   </table>
+
                 </div>
             </div>
+        </div>
+
+        <!--- Users ---->
+
+        <div class="shopping-cart" style="width:1000px">
+            <div class="basket_title"> Invoices  </div>
+
+            <div class="container" style="background-color:white; padding-left:30px; padding-right:30px; padding-bottom:20px; padding-top:5px;">
+                <div style="overflow-x:auto;">
+
+                  <table class="invoice_table">
+                    <tr class="invoice_row">
+                      <th class="invoice_column" style="border-radius:0px;"> User ID </th>
+                      <th class="invoice_column" style="border-radius:0px;"> Name </th>
+                      <th class="invoice_column" style="border-radius:0px;"> Surname </th>
+                      <th class="invoice_column" style="border-radius:0px;"> Address </th>
+                      <th class="invoice_column" style="border-radius:0px;"> City </th>
+                      <th class="invoice_column" style="border-radius:0px;"> Country </th>
+                    </tr>
+
+                   <% for (id, ime, priimek, naslov, mesto, drzava) in uporabniki: %>
+                        <tr class="invoice_row">
+                          <td class="invoice_column"> {{id}} </td>
+                          <td class="invoice_column"> {{ime}} </td>
+                          <td class="invoice_column"> {{priimek}} </td>
+                          <td class="invoice_column"> {{naslov}} </td>
+                          <td class="invoice_column"> {{mesto}} </td>
+                          <td class="invoice_column"> {{drzava}} </td>
+                        </tr>
+                    <% end %>
+                  </table>
+
+                </div>
+            </div>
+        </div>
 
 </body>
 

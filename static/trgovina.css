@@ -145,6 +145,7 @@ body {
 /* Center website */
 
 h1 {
+    color: #999999;
     font-size: 50px;
     word-break: break-all;
     font-weight: 200;
@@ -287,9 +288,7 @@ input[type=submit]:hover {
 
 /*                     Social media:            */
 .fa {
-    width: 40px;
-    display: block;
-    margin: auto;
+    width: 50px;
 }
 
 /*                     Slideshow gallery - Home page          */

@@ -60,7 +60,7 @@ def uporabnikovId(email):
 def uporabniki():
     """ Vrne tabelo vseh uporabnikov. """
     cur.execute("""
-        SELECT * FROM UPORABNIK
+        SELECT id, ime, priimek, naslov, mesto, drzava FROM UPORABNIK
         """)
     return cur.fetchall()
 
@@ -257,13 +257,23 @@ def relevantniPodatkiSlikNakupa(id_nakupa):
     podatki_o_slikah = []
     for slika_id in idji_slik:
         cur.execute("""
-                SELECT naslov, ime_datoteke, vrsta, cena FROM SLIKA
+                SELECT id, naslov, ime_datoteke, vrsta, cena FROM SLIKA
                 WHERE id = (?)
                 """, (slika_id,))
         podatki_o_slikah.append(cur.fetchall()[0]) # tuple (naslov, pot, vrsta, cena)
 
     return datum, vrednost_nakupa, podatki_o_slikah
 
+def pretekliNakupi():
+    pass # TODO: Odkomentiraj, ko bo v bazi dodan uporabnik_id pri tabeli nakup
+    """"""
+    cur.execute("""
+                SELECT racun_id, datum, ime, priimek, vrednost FROM NAKUP
+                JOIN RACUN ON NAKUP.racun_id=RACUN.id
+                JOIN UPORABNIK ON NAKUP.uporabnik_id=UPORABNIK.id
+                """) # id_nakupa je isti kot id_racuna
+    return cur.fetchall()
+    """"""
 
 
 ##       Sporocila

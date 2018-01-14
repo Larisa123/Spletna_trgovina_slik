@@ -1,0 +1,57 @@
+<<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Larisa Carli | Fine Art</title>
+    <link href="/static/trgovina.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="shopping-cart" style="width:1000px">
+
+        <!--- Podatki o računu --->
+        <table style="padding-bottom:30px">
+            <tr>
+                <th class="invoice_desc_column_0" style="padding: 0px 30px;"> Invoice ID </th>
+                <th class="invoice_desc_column_1"> {{nakup_id}} </th>
+            </tr>
+            <tr>
+                <th class="invoice_desc_column_0" style="padding: 0px 30px;"> Issue Date </th>
+                <th class="invoice_desc_column_1"> {{date}} </th> </tr>
+            <tr>
+                <th class="invoice_desc_column_0" style="padding: 0px 30px;"> Subject </th>
+                <th class="invoice_desc_column_1"> Original Art Purchase </th> </tr>
+        </table>
+
+        <!--- Slike nakupa --->
+        <div class="container" style="background-color:white; padding-left:30px; padding-right:30px; padding-bottom:300px; padding-top:5px;">
+            <div style="overflow-x:auto;">
+              <table class="invoice_table">
+                  <!--- Main row --->
+                <tr class="invoice_row">
+                    <th class="invoice_column" style="width:7%; border-radius:0px;"> ID </th>
+                    <th class="invoice_column" style="width:10%; border-radius:0px;"> Painting </th>
+                    <th class="invoice_column" style="border-radius:0px;"> Painting type </th>
+                    <th class="invoice_column" style="border-radius:0px;"> Painting title </th>
+                    <th class="invoice_column" style="width:15%; border-radius:0px;"> Price </th>
+                </tr>
+
+                <!--- Products row ---->
+                  <% for (id, naslov_slike, pot_slike, vrsta_slike, cena_slike) in relevantni_podatki_slik_nakupa: %>
+                    <tr class="invoice_row">
+                        <th class="invoice_column" style="width:7%; border-radius:0px;"> {{id}} </th>
+                        <td class="invoice_column" style="width:10%">
+                            <img src="static/images/{{pot_slike}}.jpg" style="height:40px">
+                        </td>
+                        <td class="invoice_column"> {{vrsta_slike}} </td>
+                        <td class="invoice_column"> {{naslov_slike}} </td>
+                        <td class="invoice_column" style="width:15%"> {{cena_slike}} € </td>
+                    </tr>
+                  <% end %>
+              </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

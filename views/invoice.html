@@ -74,21 +74,23 @@
               <table class="invoice_table">
                   <!--- Main row --->
                 <tr class="invoice_row">
+                    <th class="invoice_column" style="width:5%; border-radius:0px;"> ID </th>
                     <th class="invoice_column" style="width:10%; border-radius:0px;"> Painting </th>
-                    <th class="invoice_column" style="border-radius:0px;"> Painting type </th>
-                    <th class="invoice_column" style="border-radius:0px;"> Painting title </th>
-                    <th class="invoice_column" style="width:15%; border-radius:0px;"> Price </th>
+                    <th class="invoice_column" style="border-radius:0px; width:35%"> Painting type </th>
+                    <th class="invoice_column" style="border-radius:0px; width:40%"> Painting title </th>
+                    <th class="invoice_column" style="width:20%; border-radius:0px;"> Price </th>
                 </tr>
 
                   <!--- Products row ---->
-                  <% for (naslov_slike, pot_slike, vrsta_slike, cena_slike) in relevantni_podatki_slik_nakupa: %>
+                  <% for (id, naslov_slike, pot_slike, vrsta_slike, cena_slike) in relevantni_podatki_slik_nakupa: %>
                     <tr class="invoice_row">
+                        <th class="invoice_column" style="width:5%; border-radius:0px;"> {{id}} </th>
                         <td class="invoice_column" style="width:10%">
                             <img src="static/images/{{pot_slike}}.jpg" style="height:40px">
                         </td>
-                        <td class="invoice_column"> {{vrsta_slike}} </td>
-                        <td class="invoice_column"> {{naslov_slike}} </td>
-                        <td class="invoice_column" style="width:15%"> {{cena_slike}} € </td>
+                        <td class="invoice_column" style="width:35%"> {{vrsta_slike}} </td>
+                        <td class="invoice_column" style="width:40%"> {{naslov_slike}} </td>
+                        <td class="invoice_column" style="width:20%"> {{cena_slike}} € </td>
                     </tr>
                   <% end %>
 
@@ -96,7 +98,7 @@
                         <td class="invoice_column" style="width:10%"> </td>
                         <td class="invoice_column">  </td>
                         <td class="invoice_column" style="font-weight:bold"> Price total: </td>
-                        <td class="invoice_column" style="width:15%; font-weight:bold;">
+                        <td class="invoice_column" style="width:15%; font-weight:bold; border-bottom: 1px solid #666666;">
                             {{vrednost_nakupa}} €
                         </td>
                   </tr>
@@ -104,7 +106,7 @@
             </div>
 
             <!-- Web2PDF Converter Button BEGIN -->
-            <script type="text/javascript">
+            <script type="text/javascript" style="padding:20px">
             var
             pdfbuttonlabel="Save as PDF"
             </script>
