@@ -106,6 +106,14 @@ def prikaziMenuLogin():
         redirect('/store/login') # prikazimo sporocilo in se naj poskusi prijaviti ponovno
 
 
+''' Odjava '''
+
+@get('/signout')
+def odjaviSe():
+    """ Odjavi uporabnika in ga vrže na začetno stran. """
+    modeli.Uporabnik.id = None # ni prijavljenega uporabnika
+    redirect('/')
+
 ''' Košarica '''
 
 @get('/basket')
@@ -157,7 +165,7 @@ def prikaziRacun():
                     nakup_id=id_nakupa,
                     uporabnik=podatki_uporabnika)
 
-@post('/basket/paintings_from_invoice_id<id>')
+@post('/paintings_from_invoice_id<id>')
 def slikeNakupa(id):
     """ Prikaže slike nakupa z id-jem. To lahko vidi samo admin, ko gleda pretekle nakupe. """
     datum, vrednost_nakupa, podatki_o_slikah = modeli.relevantniPodatkiSlikNakupa(id)
@@ -171,11 +179,9 @@ def slikeNakupa(id):
 
 @get('/admin')
 def prikaziPodatkeZaAdmina():
-    print(modeli.uporabniki())
     return template('admin.html',
                     sporocila=modeli.pridobiSporocila(),
-                    nakupi=[],
+                    nakupi=modeli.pretekliNakupi(),
                     uporabniki=modeli.uporabniki())
-                    #nakupi=modeli.pretekliNakupi())
 
 run(host='localhost', port=8080)

@@ -76,8 +76,8 @@
                 <tr class="invoice_row">
                     <th class="invoice_column" style="width:5%; border-radius:0px;"> ID </th>
                     <th class="invoice_column" style="width:10%; border-radius:0px;"> Painting </th>
-                    <th class="invoice_column" style="border-radius:0px; width:35%"> Painting type </th>
-                    <th class="invoice_column" style="border-radius:0px; width:40%"> Painting title </th>
+                    <th class="invoice_column" style="border-radius:0px; width:30%"> Painting type </th>
+                    <th class="invoice_column" style="border-radius:0px; width:35%"> Painting title </th>
                     <th class="invoice_column" style="width:20%; border-radius:0px;"> Price </th>
                 </tr>
 
@@ -88,25 +88,28 @@
                         <td class="invoice_column" style="width:10%">
                             <img src="static/images/{{pot_slike}}.jpg" style="height:40px">
                         </td>
-                        <td class="invoice_column" style="width:35%"> {{vrsta_slike}} </td>
-                        <td class="invoice_column" style="width:40%"> {{naslov_slike}} </td>
+                        <td class="invoice_column" style="width:30%"> {{vrsta_slike}} </td>
+                        <td class="invoice_column" style="width:35%"> {{naslov_slike}} </td>
                         <td class="invoice_column" style="width:20%"> {{cena_slike}} € </td>
                     </tr>
                   <% end %>
 
                   <tr class="invoice_row" style="border-top: 1px solid #666666; border-bottom: 1px solid #666666;">
+                        <td class="invoice_column" style="width:5%"> </td>
                         <td class="invoice_column" style="width:10%"> </td>
-                        <td class="invoice_column">  </td>
-                        <td class="invoice_column" style="font-weight:bold"> Price total: </td>
-                        <td class="invoice_column" style="width:15%; font-weight:bold; border-bottom: 1px solid #666666;">
+                        <td class="invoice_column" style="width:30%">  </td>
+                        <td class="invoice_column" style="font-weight:bold; width:35%"> Price total: </td>
+                        <td class="invoice_column" style="width:20%; font-weight:bold; border-bottom: 1px solid #666666;">
                             {{vrednost_nakupa}} €
                         </td>
                   </tr>
               </table>
             </div>
+        </div>
 
+        <div style="margin: 30px">
             <!-- Web2PDF Converter Button BEGIN -->
-            <script type="text/javascript" style="padding:20px">
+            <script type="text/javascript">
             var
             pdfbuttonlabel="Save as PDF"
             </script>

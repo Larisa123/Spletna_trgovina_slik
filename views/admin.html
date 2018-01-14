@@ -49,8 +49,12 @@
                           <td class="invoice_column"> {{id}} </td>
                           <td class="invoice_column"> {{datum}} </td>
                           <td class="invoice_column"> {{ime + " " + priimek}} </td>
-                          <td>
-                              <a href="paintings_from_invoice_id{{nakup_id}}" method="post" class="invoice_column"> Paintings </a>
+                          <td class="invoice_column">
+                              <form method="post" action="/paintings_from_invoice_id{{id}}" style="border:none">
+                                   <button style="border:none;outline:none;background:none;cursor:pointer;color:#0000EE;text-decoration:underline;font-family:inherit;font-size:inherit;">
+                                       Paintings
+                                   </button>
+                              </form>
                           </td>
                           <td class="invoice_column"> {{vrednost}} € </td>
                         </tr>
@@ -64,7 +68,7 @@
         <!--- Users ---->
 
         <div class="shopping-cart" style="width:1000px">
-            <div class="basket_title"> Invoices  </div>
+            <div class="basket_title"> Users  </div>
 
             <div class="container" style="background-color:white; padding-left:30px; padding-right:30px; padding-bottom:20px; padding-top:5px;">
                 <div style="overflow-x:auto;">

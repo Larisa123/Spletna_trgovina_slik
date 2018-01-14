@@ -190,9 +190,9 @@ def pretvoriKosaricoVNakup(uporabnik_id):
     # ustvarimo nov racun in nakup (racun prej, ker rabi nakup tudi id od racuna):
     nov_racun_id = novRacun(vrednost=sum(vrednosti))
     cur.execute("""
-                        INSERT INTO NAKUP (racun_id)
-                        VALUES (?)
-                        """, (nov_racun_id,))
+                        INSERT INTO NAKUP (racun_id, uporabnik_id)
+                        VALUES (?, ?)
+                        """, (nov_racun_id, uporabnik_id))
     # dodajmo posamezno sliko v tabelo slike_nakupa in jih odstranimo iz kosarice:
     for slika in slike_kosarice:
         dodajSlikoNakupa(nakup_id=nov_racun_id, slika_id=slika[0])
@@ -209,7 +209,7 @@ def odstraniSlikoIzKosarice(uporabnik_id, slika_id, nakup):
         conn.commit()
         print("Uspešno odstranjena slika " + str(slika_id) + " iz košarice uporabnika " + str(uporabnik_id))
 
-        spremeniDosegljivostSlike(slika_id, True)
+        spremeniDosegljivostSlike(slika_id, not nakup) # dosegljivost je true, če ne kupujemo, false, če smo kupili
     except:
         print("Slike" + str(slika_id) + "sploh ni bilo v kosarici uporabnika " + str(uporabnik_id))
 
@@ -265,15 +265,12 @@ def relevantniPodatkiSlikNakupa(id_nakupa):
     return datum, vrednost_nakupa, podatki_o_slikah
 
 def pretekliNakupi():
-    pass # TODO: Odkomentiraj, ko bo v bazi dodan uporabnik_id pri tabeli nakup
-    """"""
     cur.execute("""
                 SELECT racun_id, datum, ime, priimek, vrednost FROM NAKUP
                 JOIN RACUN ON NAKUP.racun_id=RACUN.id
                 JOIN UPORABNIK ON NAKUP.uporabnik_id=UPORABNIK.id
                 """) # id_nakupa je isti kot id_racuna
     return cur.fetchall()
-    """"""
 
 
 ##       Sporocila
