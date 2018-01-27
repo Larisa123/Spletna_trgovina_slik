@@ -11,6 +11,17 @@
     <div class="shopping-cart">
         <form method="post" action="/store/register_submit">
           <div class="container">
+              <!--- Če je registracija bila neuspešna bomo spet pristali tukaj, uporabniku moramo še sporočiti,
+              da naj poskusi znova --->
+             <% if registration_confirmed == False: %>
+                <div class="alert">
+                  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                  Your registration was not successful. Try with a different email address.
+                </div>
+            <% end %>
+
+              <!--- Registracijska forma --->
+
             <label class="my_label"><b>Name</b></label>
             <input type="text" placeholder="Enter your name" name="name" required>
             <br/>

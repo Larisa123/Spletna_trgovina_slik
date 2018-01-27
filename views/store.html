@@ -20,6 +20,7 @@
 
     <!-- Portfolio Gallery Grid -->
 
+    <!--- Preverimo ali naj se prikaže sporočilo (ko poskusi dodati element v košarico, pa še ni prijavljen) --->
     <% if show_alert: %>
         <div class="alert">
             <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
@@ -27,6 +28,7 @@
         </div>
     <% end %>
 
+    <!--- Gumbi za prijavo, registracijo, košarico, odjavo --->
     <table class="shopping_basket_table" style="margin-right: 20px">
         <tr>
             <% if uporabnik is not None: %>
@@ -44,6 +46,7 @@
                     </form>
                 </th>
             <% end %>
+
             <% if uporabnik is None: %>
                 <!--- Register, login button --->
                 <th>
@@ -61,7 +64,7 @@
         </tr>
     </table>
 
-    <!--- Store products: ---->
+    <!--- Store products (naloži slike iz baze in jim doda gumb za dodajo v košarico, če so dosegljive): ---->
 
     <div class="row">
         <% for (id, dosegljivost, naslov, pot, vrsta, cena) in slike: %>
@@ -74,6 +77,8 @@
               <table style="width:100%; height:50px;">
                 <tr>
                     <th class="store_image_subtitle"> Price: {{cena}} € </th>
+
+                    <!--- Če je slika še dosegljiva, dodaj košarico, sicer napis Sold --->
                     <% if dosegljivost == 1: %>
                         <th>
                             <form method="post" action="/store/add_to_basket{{id}}" style="color: white; border:none">
@@ -83,6 +88,7 @@
                     <% elif dosegljivost == 0: %>
                         <th class="store_image_subtitle" style="color: #d35541"> Sold </th>
                     <% end %>
+
                  </tr>
               </table>
             </div>

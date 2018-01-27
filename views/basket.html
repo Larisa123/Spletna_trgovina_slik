@@ -37,18 +37,18 @@
         <% end %>
 
         <!-- Total price -->
-        <div class="basket_item" style="width:100%; height: 115px; border-top:1px solid #E1E8EE;">
+        <div class="basket_item" style="width:100%;border-top:1px solid #E1E8EE;">
             <div  style="width:100%; text-align:right; color:#666666; font-weight:bold;"> Price total:  </div>
-            <div style="width:100%; text-align:right; color:#666666; font-weight:bold;"> {{cena_kosarice}}€ (Popravi poravnavo)</div>
+            <div style="width:100%; text-align:right; color:#666666; font-weight:bold;"> {{cena_kosarice}}€ </div>
+        </div>
 
-            <!--- Buy button --->
-            <div style="margin: 25px 10px">
-                <form style="width:100%; border:none; align: right" action="/invoice" method="get">
-                    <button onclick="/invoice" type="submit" class="store_button" style="width:200px; align:right;" value="Submit">
-                        Complete purchase
-                    </button>
+        <!--- Buy button --->
+        <div style="width:100%; margin-right:10px;">
+            <form style="width:100%; border:none;" action="/invoice" method="get">
+                <button onclick="/invoice" type="submit" class="store_button" style="width:200px; margin-left:30px;" value="Submit">
+                    Complete purchase
+                </button>
             </form>
-            </div>
         </div>
 
 

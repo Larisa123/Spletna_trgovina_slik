@@ -94,13 +94,27 @@
                     </tr>
                   <% end %>
 
+
+                  <!--- Zadnja vrstica z davki itd. --->
                   <tr class="invoice_row" style="border-top: 1px solid #666666; border-bottom: 1px solid #666666;">
-                        <td class="invoice_column" style="width:5%"> </td>
-                        <td class="invoice_column" style="width:10%"> </td>
-                        <td class="invoice_column" style="width:30%">  </td>
-                        <td class="invoice_column" style="font-weight:bold; width:35%"> Price total: </td>
-                        <td class="invoice_column" style="width:20%; font-weight:bold; border-bottom: 1px solid #666666;">
-                            {{vrednost_nakupa}} €
+                            <table style="padding:30px; width:40%; margin-left:60%">
+                                <tr>
+                                    <th class="invoice_desc_column_0"> Price before VAT: </th>
+                                    <th class="invoice_desc_column_1"> {{round(vrednost_nakupa * 0.72, 2)}} € </th>
+                                </tr>
+                                <tr>
+                                    <th class="invoice_desc_column_0"> VAT (22%):  </th>
+                                    <th class="invoice_desc_column_1"> {{round(vrednost_nakupa * 0.22, 2)}} € </th>
+                                </tr>
+                                <tr>
+                                    <th class="invoice_desc_column_0"> Shipping: </th>
+                                    <th class="invoice_desc_column_1"> 7.5 € </th>
+                                </tr>
+                                <tr>
+                                    <th class="invoice_desc_column_0"> Total price: </th>
+                                    <th class="invoice_desc_column_1"> <b>{{vrednost_nakupa + 7.5}} € </b></th>
+                                </tr>
+                            </table>
                         </td>
                   </tr>
               </table>

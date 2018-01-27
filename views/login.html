@@ -24,12 +24,22 @@
     <div class="shopping-cart">
         <form method="post" action="/store/login_submit">
           <div class="container">
+              <!--- Preverimo, če je treba prikazati kako sporočilo o uspešnosti/neuspešnosti --->
+              <% if registration_confirmed: %>
+                <div class="success">
+                  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                  Your registration was successful. Please log in.
+                </div>
+            <% end %>
+
             <% if previous_login_failed: %>
                 <div class="alert">
                   <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                   Your email or password is incorrect. Please try again.
                 </div>
             <% end %>
+
+              <!--- Login forma --->
 
             <label class="my_label"><b>Email</b></label>
             <input type="email" placeholder="Enter email" name="email" required>

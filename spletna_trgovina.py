@@ -69,7 +69,10 @@ def prikaziMenuTrgovina():
 
 @get('/store/register')
 def prikaziMenuRegister():
-    return template('register.html')
+    # spremenljivko moramo nastaviti na None, da bo registracija/prijava še kasneje pravilno delovala
+    se_je_ravno_registriral = modeli.Uporabnik.registracija_uspesna # jo shranimo
+    modeli.Uporabnik.registracija_uspesna = None
+    return template('register.html', registration_confirmed=se_je_ravno_registriral)
 
 
 @post('/store/register_submit')
@@ -83,16 +86,30 @@ def registracija():
     city = request.forms.city
     country = request.forms.country
 
-    modeli.dodajUporabnika(name, surname, email, password, address, city, country)
+    modeli.dodajUporabnika(name, surname, email, password, address, city, country) # nastavi tudi spremenljivko o uspešnosti
     redirect('/store/login')
 
 ''' Login (prijava) '''
 
 @get('/store/login')
 def prikaziMenuLogin():
+    """ Prijava """
     neuspesnost = modeli.Uporabnik.prijava_neuspesna
     modeli.Uporabnik.prijava_neuspesna = False # da se ne bo pri naslednji prijavi spet pokazalo sporocilo o neuspesnosti
-    return template('login.html', previous_login_failed=neuspesnost)
+
+    """ Registracija """
+
+    # če se je ravno registriral, mu želimo sporočiti, da je registracija bila uspešna
+    se_je_ravno_registriral = modeli.Uporabnik.registracija_uspesna
+
+    # če ni bila uspešna, mu moramo sporočiti, naj poskusi ponovno
+    # sprememba odprte strani na /login potem ni smiselna, dajmo ga nazaj na /register:
+    if se_je_ravno_registriral == False:
+        redirect('/store/register')
+    else:
+        modeli.Uporabnik.registracija_uspesna = None
+
+    return template('login.html', previous_login_failed=neuspesnost, registration_confirmed=se_je_ravno_registriral)
 
 @post('/store/login_submit')
 def prikaziMenuLogin():
@@ -183,5 +200,6 @@ def prikaziPodatkeZaAdmina():
                     sporocila=modeli.pridobiSporocila(),
                     nakupi=modeli.pretekliNakupi(),
                     uporabniki=modeli.uporabniki())
+
 
 run(host='localhost', port=8080)
