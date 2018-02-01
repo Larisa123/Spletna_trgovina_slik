@@ -22,6 +22,8 @@
     <div class="shopping-cart">
         <div class="container">
 
+            <!--- Najprej preveri, če smo bli sem samo predirectani in smo v bistvo že poskusili poslati sporočilo -->
+            <!--- Tekrat pokaže, da je bilo uspešno ali neuspešno --->
             <% if message_sent: %>
                 <div class="success">
                   <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
@@ -35,6 +37,8 @@
                 </div>
             <% end %>
 
+
+            <!-- Forma za poslat podatke in sporocilo -->
           <form action="/store/contact_submit" method="post">
 
             <label for="fname">First Name</label>
@@ -46,7 +50,7 @@
             <br/>
 
             <label for="lname">Email</label>
-            <input type="text" id="email_form" name="email" placeholder="Your email..">
+            <input type="text" id="email_form" name="email" placeholder="Your email.." required>
             <br/>
 
             <label for="subject">What would you like to ask me?</label>

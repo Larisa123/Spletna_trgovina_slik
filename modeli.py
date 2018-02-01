@@ -12,9 +12,9 @@ class Uporabnik:
     """ Če te informacije shranjujemo samo kot globalno spremenljivko, se sproti brišejo.
         Tako se pa ne. """
     id = None
-    hotel_dodati_v_kosarico = False
+    hotel_dodati_v_kosarico = False # če je uporabnik hotel dodati sliko v košarico, pa še ni bil registiran, bo to True
     registracija_uspesna = None # če nismo ravno po registraciji (na login strani), naj bo ta spremenljivka None
-    prijava_neuspesna = False
+    prijava_neuspesna = False # če se je poskusil prijaviti in prijava ni bila uspešna
 
 ##   UPORABNIKI:
 
@@ -259,7 +259,7 @@ def relevantniPodatkiSlikKosarice(uporabnik_id):
 
 def relevantniPodatkiSlikNakupa(id_nakupa):
     """ Vrne relevantne podatke slik za prikaz na računu. 
-    Ti so: datum, vrednost_nakupa in za vse slike: naslov, pot, vrsta, cena."""
+    Ti so: datum, vrednost_nakupa in za vse slike: id, naslov, pot, vrsta, cena."""
 
 
     # najprej pridobimo datum in vrednost nakupa iz računa:
@@ -271,7 +271,7 @@ def relevantniPodatkiSlikNakupa(id_nakupa):
 
     # podatki o slikah nakupa:
     cur.execute("""
-                SELECT SLIKA.id, naslov, ime_datoteke, cena FROM SLIKE_NAKUPA
+                SELECT SLIKA.id, naslov, ime_datoteke, vrsta, cena FROM SLIKE_NAKUPA
                 INNER JOIN SLIKA ON SLIKA.id=SLIKE_NAKUPA.slika_id
                 WHERE SLIKE_NAKUPA.nakup_id = (?)
                 """, (id_nakupa,))

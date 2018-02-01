@@ -12,7 +12,7 @@
 
 @font-face {
     font-family: thin_font;
-    src: url(fonts/Fertigo_PRO.otf);
+    src: url(fonts/Lato-Thin.ttf);
 }
 
 .topheading {
@@ -65,7 +65,7 @@ form {
 
 /* Set a style for all buttons */
 button {
-    background-color:  #b3b3b3;
+    background-color: #999999;
     color: white;
     font-size: 13px;
     font-family: thin_font;
@@ -282,6 +282,7 @@ input[type=password], input[type=email] {
 /* Style the submit button with a specific background color etc */
 input[type=submit] {
     color: white;
+    background-color: #999999;
     padding: 12px 20px;
     border: none;
     border-radius: 4px;
