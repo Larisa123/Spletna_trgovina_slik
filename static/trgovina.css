@@ -604,3 +604,12 @@ input[type=submit]:hover {
     right: 15%;
     bottom: 30px;
 }
+
+.column .content img{
+	height:400px; 
+}
+
+textarea {
+	font-family: Arial;
+    color: #999;
+}
