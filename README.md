@@ -6,7 +6,7 @@ Spletna trgovina za prodajo umetniških slik, narejena v sklopu predmeta Podatko
 
 ## Relacijski diagram:
 
-![diagram_spletna_trgovina](https://user-images.githubusercontent.com/13337783/34355370-fe076456-ea34-11e7-9b33-a6e5c84331f2.jpg)
+<img width="909" alt="screen shot 2018-02-14 at 8 46 41 am" src="https://user-images.githubusercontent.com/13337783/36192837-a6e2194a-1163-11e8-878e-6966594fa98e.png">
 
-## UML diagram:
+## UML diagram (pred manjšimi dodatki):
 ![ums_spletna_trgovina](https://user-images.githubusercontent.com/13337783/34249455-1485e86e-e63a-11e7-95c9-ff01011d3ffd.png)
